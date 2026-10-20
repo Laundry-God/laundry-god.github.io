@@ -1,203 +1,228 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <title>Untitled</title>
-    
-
-  </head>
-    
-  <body>
-  <!DOCTYPE html>
 <html lang="id">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CleanLaundry - UMKM Laundry Kiloan</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f7fb;
-      color: #333;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CleanLaundry - UMKM Laundry</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            padding: 50px 20px 60px 20px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            text-align: center;
+        }
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 2rem;
+            color: #0f172a;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .hero p {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-bottom: 24px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #0284c7;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+            transition: background 0.2s;
+        }
+        .whatsapp-btn:hover {
+            background-color: #0369a1;
+        }
+        .hero-subtext {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 15px;
+        }
 
-    header {
-      background: #ffffff;
-      padding: 15px 20px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        /* Pricing Section */
+        .pricing-section {
+            max-width: 900px;
+            margin: -30px auto 40px auto;
+            padding: 0 20px;
+        }
+        .pricing-title {
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 25px;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .price-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e2e8f0;
+        }
+        .price-card i {
+            font-size: 2rem;
+            color: #0284c7;
+            margin-bottom: 12px;
+        }
+        .price-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+        .price-card .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0284c7;
+            margin-bottom: 8px;
+        }
+        .price-card .desc {
+            font-size: 0.82rem;
+            color: #64748b;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #f1f5f9;
+            margin-bottom: 12px;
+        }
+        .price-card .extra {
+            font-size: 0.78rem;
+            color: #475569;
+        }
 
-    .logo {
-      font-weight: bold;
-      color: #1a56db;
-      font-size: 18px;
-    }
+        /* Features Badge */
+        .features-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            padding: 0 20px;
+        }
+        .badge-item {
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
 
-    .hero {
-      background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .hero h1 {
-      color: #1e3a8a;
-      font-size: 26px;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      color: #475569;
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-
-    .btn-wa {
-      background-color: #10b981;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
-      box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 0 15px;
-    }
-
-    .section-title {
-      text-align: center;
-      color: #1e3a8a;
-      margin-bottom: 20px;
-      font-size: 20px;
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      text-align: center;
-      border-top: 4px solid #1a56db;
-    }
-
-    .card h3 {
-      margin-top: 0;
-      color: #1e3a8a;
-      font-size: 18px;
-    }
-
-    .price {
-      font-size: 20px;
-      font-weight: bold;
-      color: #059669;
-      margin: 15px 0;
-    }
-
-    .features {
-      background: white;
-      margin-top: 30px;
-      padding: 20px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    }
-
-    .features ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .features li {
-      font-size: 13px;
-      color: #475569;
-      font-weight: 500;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 15px;
-      color: #94a3b8;
-      font-size: 12px;
-    }
-  </style>
+        /* Footer */
+        footer {
+            background-color: #f1f5f9;
+            border-top: 1px solid #e2e8f0;
+            padding: 30px 20px;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.82rem;
+        }
+        footer .brand {
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 6px;
+        }
+        footer p {
+            margin-bottom: 4px;
+        }
+    </style>
 </head>
-
 <body>
 
-  <header>
-    <div class="logo">✨ CleanLaundry.id</div>
-  </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Laundry Kiloan Cepat & Wangi</h1>
+            <p>Antar Jemput Gratis — Cucian bersih, wangi, dan rapi. Diantar jemput langsung ke tempatmu, gratis tanpa biaya tambahan.</p>
+            <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20pesan%20antar%20jemput%20laundry." class="whatsapp-btn" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> Pesan via WhatsApp
+            </a>
+            <div class="hero-subtext">Respon cepat • Chat sekarang • Gratis pick up & delivery</div>
+        </div>
+    </section>
 
-  <section class="hero">
-    <h1>Laundry Kiloan Cepat & Wangi</h1>
-    <p>Antar Jemput Gratis — Cucian bersih, wangi, dan rapi langsung ke tempatmu tanpa biaya tambahan.</p>
-    <a href="https://wa.me/6281234567890" class="btn-wa">💬 Pesan via WhatsApp</a>
-  </section>
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <h2 class="pricing-title">Harga Laundry per Kilo</h2>
+        <div class="pricing-grid">
+            <!-- Card 1 -->
+            <div class="price-card">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <h3>Cuci Kiloan</h3>
+                <div class="price">Rp 6.000 <span style="font-size:0.85rem; font-weight:normal;">/kg</span></div>
+                <div class="desc">Cuci bersih + deterjen wangi</div>
+                <div class="extra">Boneka / Jaket<br><strong>Rp 12.000 /kg</strong></div>
+            </div>
+            <!-- Card 2 -->
+            <div class="price-card">
+                <i class="fa-solid fa-shirt"></i>
+                <h3>Cuci + Setrika</h3>
+                <div class="price">Rp 9.000 <span style="font-size:0.85rem; font-weight:normal;">/kg</span></div>
+                <div class="desc">Cuci + setrika rapi, wangi tahan lama</div>
+                <div class="extra">Boneka / Jaket<br><strong>Rp 12.000 /kg</strong></div>
+            </div>
+            <!-- Card 3 -->
+            <div class="price-card">
+                <i class="fa-solid fa-bed"></i>
+                <h3>Bed Cover / Selimut</h3>
+                <div class="price">Rp 15.000 <span style="font-size:0.85rem; font-weight:normal;">/kg</span></div>
+                <div class="desc">Bersih, higienis, wangi</div>
+                <div class="extra">Boneka / Jaket<br><strong>Rp 12.000 /kg</strong></div>
+            </div>
+        </div>
+    </section>
 
-  <div class="container">
-    <h2 class="section-title">Harga Laundry per Kilo</h2>
-
-    <div class="pricing-grid">
-      <div class="card">
-        <h3>Cuci Kiloan</h3>
-        <div class="price">Rp 6.000 <span style="font-size:12px; color:#64748b;">/kg</span></div>
-        <p style="font-size: 13px; color: #64748b;">Cuci bersih + deterjen wangi. Cocok untuk pakaian harian.</p>
-      </div>
-
-      <div class="card">
-        <h3>Cuci + Setrika</h3>
-        <div class="price">Rp 9.000 <span style="font-size:12px; color:#64748b;">/kg</span></div>
-        <p style="font-size: 13px; color: #64748b;">Cuci setrika rapi, wangi tahan lama, siap pakai.</p>
-      </div>
-
-      <div class="card">
-        <h3>Bed Cover / Selimut</h3>
-        <div class="price">Rp 15.000 <span style="font-size:12px; color:#64748b;">/pcs</span></div>
-        <p style="font-size: 13px; color: #64748b;">Pembersihan menyeluruh, higienis, dan bebas bau apek.</p>
-      </div>
+    <!-- Feature Badges -->
+    <div class="features-bar">
+        <div class="badge-item"><i class="fa-solid fa-circle-check"></i> Antar Jemput Gratis</div>
+        <div class="badge-item"><i class="fa-solid fa-circle-check"></i> Selesai 24 Jam</div>
+        <div class="badge-item"><i class="fa-solid fa-circle-check"></i> Wangi & Bersih</div>
     </div>
 
-    <div class="features">
-      <ul style="padding: 0; list-style: none;">
-        <li>🚀 Antar Jemput Gratis</li>
-        <li>⏱️ Selesai 24 Jam</li>
-        <li>🌸 Wangi & Higienis</li>
-      </ul>
-    </div>
-  </div>
-
-  <footer>
-    <p><strong>CleanLaundry</strong> • UMKM Laundry Lokal</p>
-    <p>Jam Buka: 08.00 - 20.00 (Setiap Hari) • Bandung, Jawa Barat</p>
-    <p>Hubungi Kami: +62 812-3456-7890 | @cleanlaundry.id</p>
-  </footer>
+    <!-- Footer -->
+    <footer>
+        <div class="brand">CleanLaundry • UMKM Laundry Lokal</div>
+        <p>Jam Buka: 08.00 - 20.00 (Setiap Hari) • Bandung, Jawa Barat</p>
+        <p>Hubungi kami: +62 812-3456-7890 • @cleanlaundry.id</p>
+    </footer>
 
 </body>
-
-</html>
-    
-  </body>
-  
 </html>
