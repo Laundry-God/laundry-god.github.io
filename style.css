@@ -703,3 +703,159 @@ details.faq-item p {
     font-size: 1rem;
     box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
 }
+
+/* Styling Halaman Detail Modern & Konsisten */
+.detail-header {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb) !important;
+    color: #ffffff !important;
+    padding: 2rem 1.25rem 2.5rem !important;
+    text-align: center !important;
+    position: relative;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.btn-back {
+    display: inline-block !important;
+    color: #93c5fd !important;
+    text-decoration: none !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 1rem !important;
+}
+
+.badge-tag {
+    display: table !important;
+    margin: 0 auto 0.5rem !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    padding: 3px 12px !important;
+    border-radius: 20px !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+}
+
+.detail-header h1 {
+    font-size: 1.6rem !important;
+    margin-bottom: 0.5rem !important;
+    color: #ffffff !important;
+}
+
+.detail-price {
+    font-size: 1.8rem !important;
+    font-weight: 800 !important;
+    color: #38bdf8 !important;
+}
+
+.detail-price span {
+    font-size: 0.9rem !important;
+    color: #e0f2fe !important;
+    font-weight: 400 !important;
+}
+
+.detail-container {
+    max-width: 550px !important;
+    margin: -1.5rem auto 2rem !important;
+    padding: 0 1rem !important;
+}
+
+.detail-desc {
+    background: #ffffff !important;
+    padding: 1.25rem !important;
+    border-radius: 14px !important;
+    font-size: 0.9rem !important;
+    color: #475569 !important;
+    line-height: 1.6 !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05) !important;
+    margin-bottom: 1.25rem !important;
+}
+
+.detail-features-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+.df-card {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    padding: 1rem !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02) !important;
+}
+
+.df-icon {
+    font-size: 1.8rem !important;
+}
+
+.df-card h4 {
+    font-size: 0.95rem !important;
+    color: #0f172a !important;
+    margin-bottom: 0.2rem !important;
+    font-weight: 700 !important;
+}
+
+.df-card p {
+    font-size: 0.8rem !important;
+    color: #64748b !important;
+    margin: 0 !important;
+}
+
+.process-section {
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    padding: 1.25rem !important;
+    border-radius: 14px !important;
+    margin-bottom: 1.5rem !important;
+    text-align: center !important;
+}
+
+.process-section h3 {
+    font-size: 1rem !important;
+    color: #0f172a !important;
+    margin-bottom: 1rem !important;
+    font-weight: 700 !important;
+}
+
+.process-steps {
+    display: flex !important;
+    justify-content: space-around !important;
+    gap: 0.5rem !important;
+}
+
+.step {
+    font-size: 0.75rem !important;
+    color: #334155 !important;
+    font-weight: 600 !important;
+}
+
+.step span {
+    display: block !important;
+    width: 26px !important;
+    height: 26px !important;
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border-radius: 50% !important;
+    margin: 0 auto 0.4rem !important;
+    line-height: 26px !important;
+    font-size: 0.8rem !important;
+}
+
+.btn-order-detail {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    background: #25d366 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    padding: 14px !important;
+    border-radius: 50px !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3) !important;
+}
