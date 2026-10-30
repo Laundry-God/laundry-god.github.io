@@ -177,27 +177,34 @@ footer strong {
     transition: all 0.3s ease;
 }
 
-/* Styling Tombol WA Melayang */
+/* Styling Tombol WA Bulat & Floating */
 .btn-wa-floating {
     position: fixed;
-    bottom: 45px;
-    right: 15px;
+    bottom: 50px;
+    right: 18px;
+    width: 56px;
+    height: 56px;
     background-color: #25d366 !important;
-    color: #ffffff !important;
-    padding: 10px 18px;
-    border-radius: 50px;
-    text-decoration: none !important;
-    font-weight: 700;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
-    z-index: 99999;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+    z-index: 99999 !important;
+    touch-action: none; /* Mencegah layar ter-scroll saat geser tombol */
+    transition: transform 0.2s ease;
+}
+
+.btn-wa-floating:active {
+    transform: scale(0.95);
 }
 
 .btn-wa-floating img {
     display: block;
+    pointer-events: none; /* Biar drag lancar tanpa menyeleksi gambar */
+}
+
+
 }
 
 /* Fixed Bottom Bar */
