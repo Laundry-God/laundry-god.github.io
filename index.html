@@ -132,7 +132,7 @@ function calculateTotal() {
     document.getElementById('total-price').innerText = 'Rp ' + total.toLocaleString('id-ID');
     
     // Update link WA otomatis
-    const waNumber = '6281234567890'; // Ganti nomor WA lu
+    const waNumber = '6283187521130'; // Ganti nomor WA lu
     const text = encodeURIComponent(`Halo Laundry God, saya mau pesan:\n- Layanan: ${serviceName}\n- Perkiraan Berat: ${weight} kg\n- Estimasi Total: Rp ${total.toLocaleString('id-ID')}`);
     document.getElementById('calc-wa-btn').href = `https://wa.me/${waNumber}?text=${text}`;
 }
