@@ -204,16 +204,55 @@ calculateTotal();
         <p>Jam Buka: 08.00 - 20.00 (Setiap Hari) • Bandung, Jawa Barat</p>
         </p>@cleanlaundry.id</p>
     </footer>
-<!-- Floating WA Button & Bottom Bar -->
-<a href="https://wa.me/6283187521130?text=Halo%20Laundry%20God,%20saya%20mau%20order" class="btn-wa-floating" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" width="24" height="24">
-    <span>Pesan via WA</span>
+      
+     <!-- Floating WA Bulat & Draggable -->
+<a href="https://wa.me/6281234567890?text=Halo%20Laundry%20God,%20saya%20mau%20order" 
+   class="btn-wa-floating" 
+   id="draggableWA" 
+   target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" width="30" height="30">
 </a>
 
-<div class="bottom-bar">
-    ✔ Antar Jemput Gratis
-</div>
+<script>
+    const waBtn = document.getElementById('draggableWA');
+    let isDragging = false;
+    let offsetX = 0, offsetY = 0;
+
+    // Untuk Touch (HP)
+    waBtn.addEventListener('touchstart', (e) => {
+        isDragging = false;
+        const touch = e.touches[0];
+        offsetX = touch.clientX - waBtn.getBoundingClientRect().left;
+        offsetY = touch.clientY - waBtn.getBoundingClientRect().top;
+    }, { passive: true });
+
+    waBtn.addEventListener('touchmove', (e) => {
+        isDragging = true;
+        const touch = e.touches[0];
+        let left = touch.clientX - offsetX;
+        let top = touch.clientY - offsetY;
+
+        // Batasi agar tidak keluar layar
+        const maxLeft = window.innerWidth - waBtn.offsetWidth;
+        const maxTop = window.innerHeight - waBtn.offsetHeight;
+
+        left = Math.max(0, Math.min(left, maxLeft));
+        top = Math.max(0, Math.min(top, maxTop));
+
+        waBtn.style.left = `${left}px`;
+        waBtn.style.top = `${top}px`;
+        waBtn.style.right = 'auto';
+        waBtn.style.bottom = 'auto';
+    }, { passive: true });
+
+    // Cegah klik terbuka jika pengguna sedang menggeser (drag)
+    waBtn.addEventListener('click', (e) => {
+        if (isDragging) {
+            e.preventDefault();
+        }
+    });
+</script>
+
     
-    
-</body>
-</html>
+  </body>
+  </html>
