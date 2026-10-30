@@ -89,7 +89,58 @@
         </div>
     </div>
 </section>
+<!-- Seksi Kalkulator Harga -->
+<section class="calculator-section">
+    <h2>Hitung Estimasi Biaya</h2>
+    <p class="calc-subtitle">Pilih layanan dan masukkan perkiraan berat pakaianmu</p>
+    
+    <div class="calc-card">
+        <div class="calc-group">
+            <label for="service-select">Pilih Layanan:</label>
+            <select id="service-select" onchange="calculateTotal()">
+                <option value="6000">Cuci Kiloan - Rp 6.000 /kg</option>
+                <option value="8000">Cuci + Setrika - Rp 8.000 /kg</option>
+                <option value="15000">Bed Cover / Selimut - Rp 15.000 /kg</option>
+            </select>
+        </div>
 
+        <div class="calc-group">
+            <label for="weight-input">Perkiraan Berat (kg):</label>
+            <input type="number" id="weight-input" value="3" min="1" max="50" oninput="calculateTotal()">
+        </div>
+
+        <div class="calc-result">
+            <span>Total Estimasi:</span>
+            <h3 id="total-price">Rp 18.000</h3>
+        </div>
+
+        <a id="calc-wa-btn" href="#" target="_blank" class="btn-calc-order">
+            Pesan Hasil Estimasi via WA
+        </a>
+    </div>
+</section>
+
+<script>
+function calculateTotal() {
+    const pricePerKg = parseInt(document.getElementById('service-select').value);
+    const weight = parseFloat(document.getElementById('weight-input').value) || 0;
+    const serviceName = document.getElementById('service-select').options[document.getElementById('service-select').selectedIndex].text.split(' - ')[0];
+    
+    const total = pricePerKg * weight;
+    
+    // Format Rupiah
+    document.getElementById('total-price').innerText = 'Rp ' + total.toLocaleString('id-ID');
+    
+    // Update link WA otomatis
+    const waNumber = '6281234567890'; // Ganti nomor WA lu
+    const text = encodeURIComponent(`Halo Laundry God, saya mau pesan:\n- Layanan: ${serviceName}\n- Perkiraan Berat: ${weight} kg\n- Estimasi Total: Rp ${total.toLocaleString('id-ID')}`);
+    document.getElementById('calc-wa-btn').href = `https://wa.me/${waNumber}?text=${text}`;
+}
+
+// Jalankan saat pertama kali ke-load
+calculateTotal();
+</script>
+      
 
   </div> <!-- Penutup pricing-grid -->
     </section>
