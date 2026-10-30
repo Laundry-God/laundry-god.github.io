@@ -551,3 +551,155 @@ details.faq-item p {
     font-size: 0.78rem !important;
     color: #64748b !important;
 }
+
+/* Styling Halaman Detail Modern */
+.detail-header {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: #ffffff;
+    padding: 2rem 1.25rem 2.5rem;
+    text-align: center;
+    position: relative;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.btn-back {
+    display: inline-block;
+    color: #93c5fd;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.badge-tag {
+    display: table;
+    margin: 0 auto 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.detail-header h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.detail-price {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #38bdf8;
+}
+
+.detail-price span {
+    font-size: 0.9rem;
+    color: #e0f2fe;
+    font-weight: 400;
+}
+
+.detail-container {
+    max-width: 550px;
+    margin: -1.5rem auto 2rem;
+    padding: 0 1rem;
+}
+
+.detail-desc {
+    background: #ffffff;
+    padding: 1.25rem;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.6;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 1.25rem;
+}
+
+.detail-features-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.df-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.df-icon {
+    font-size: 1.8rem;
+}
+
+.df-card h4 {
+    font-size: 0.95rem;
+    color: #0f172a;
+    margin-bottom: 0.2rem;
+}
+
+.df-card p {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin: 0;
+}
+
+.process-section {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 1.25rem;
+    border-radius: 14px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.process-section h3 {
+    font-size: 1rem;
+    color: #0f172a;
+    margin-bottom: 1rem;
+}
+
+.process-steps {
+    display: flex;
+    justify-content: space-around;
+    gap: 0.5rem;
+}
+
+.step {
+    font-size: 0.75rem;
+    color: #334155;
+    font-weight: 600;
+}
+
+.step span {
+    display: block;
+    width: 26px;
+    height: 26px;
+    background: #2563eb;
+    color: #ffffff;
+    border-radius: 50%;
+    margin: 0 auto 0.4rem;
+    line-height: 26px;
+    font-size: 0.8rem;
+}
+
+.btn-order-detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #25d366;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+}
