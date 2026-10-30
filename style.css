@@ -177,7 +177,7 @@ footer strong {
     transition: all 0.3s ease;
 }
 
-/* Styling Tombol WA Bulat & Floating */
+/* Styling Tombol WA Bulat & Floating Smooth */
 .btn-wa-floating {
     position: fixed;
     bottom: 50px;
@@ -191,17 +191,13 @@ footer strong {
     justify-content: center !important;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
     z-index: 99999 !important;
-    touch-action: none; /* Mencegah layar ter-scroll saat geser tombol */
-    transition: transform 0.2s ease;
-}
-
-.btn-wa-floating:active {
-    transform: scale(0.95);
+    touch-action: none;
+    will-change: transform, left, top; /* Optimasi hardware GPU HP */
 }
 
 .btn-wa-floating img {
     display: block;
-    pointer-events: none; /* Biar drag lancar tanpa menyeleksi gambar */
+    pointer-events: none;
 }
 
 
