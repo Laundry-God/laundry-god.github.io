@@ -205,7 +205,15 @@ calculateTotal();
         </p>@cleanlaundry.id</p>
     </footer>
       
-     <script>
+     <!-- Floating WA Bulat & Draggable -->
+<a href="https://wa.me/6283187521130?text=Halo%20Laundry%20God,%20saya%20mau%20order" 
+   class="btn-wa-floating" 
+   id="draggableWA" 
+   target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" width="30" height="30">
+</a>
+      
+<script>
     const waBtn = document.getElementById('draggableWA');
     let isDragging = false;
     let offsetX = 0, offsetY = 0;
@@ -250,9 +258,8 @@ calculateTotal();
             e.preventDefault();
         }
     });
-     </script>
+</script>
       
-
     
   </body>
   </html>
