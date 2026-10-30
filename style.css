@@ -493,14 +493,14 @@ details.faq-item p {
     padding-top: 0.75rem;
 }
 
-/* Seksi Testimoni Fix Style */
-section.testimonial-section {
+/* Seksi Testimoni Fix Total */
+.testimonial-section {
     padding: 2.5rem 1rem !important;
     background-color: #ffffff !important;
     text-align: center !important;
 }
 
-section.testimonial-section h2 {
+.testimonial-section h2 {
     font-size: 1.4rem !important;
     color: #0f172a !important;
     margin-bottom: 1.5rem !important;
@@ -525,7 +525,7 @@ section.testimonial-section h2 {
     box-sizing: border-box !important;
 }
 
-.testimonial-card .stars {
+.stars {
     color: #f59e0b !important;
     font-size: 1.1rem !important;
     margin-bottom: 0.5rem !important;
@@ -536,17 +536,18 @@ section.testimonial-section h2 {
     color: #334155 !important;
     line-height: 1.5 !important;
     font-style: italic !important;
-    margin-bottom: 1rem !important;
+    margin-bottom: 0.75rem !important;
 }
 
-.testimonial-card .client-info strong {
+.client-info strong {
     display: block !important;
     font-size: 0.9rem !important;
     color: #0f172a !important;
+    font-weight: 700 !important;
 }
 
-.testimonial-card .client-info span {
+.client-info span {
+    display: block !important;
     font-size: 0.78rem !important;
     color: #64748b !important;
 }
-
