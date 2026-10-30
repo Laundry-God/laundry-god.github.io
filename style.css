@@ -422,3 +422,76 @@ footer strong {
     background-color: #1d4ed8;
 }
 
+/* Seksi FAQ */
+.faq-section {
+    padding: 2.5rem 1rem;
+    background-color: #f8fafc;
+    text-align: center;
+}
+
+.faq-section h2 {
+    font-size: 1.4rem;
+    color: #0f172a;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.faq-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.faq-item {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    transition: all 0.2s ease;
+}
+
+.faq-item[open] {
+    border-color: #2563eb;
+}
+
+.faq-item summary {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #0f172a;
+    cursor: pointer;
+    outline: none;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: '+';
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin-left: 10px;
+}
+
+.faq-item[open] summary::after {
+    content: '−';
+}
+
+.faq-item p {
+    font-size: 0.85rem;
+    color: #64748b;
+    line-height: 1.5;
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 0.75rem;
+}
