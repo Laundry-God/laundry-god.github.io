@@ -3,39 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Bed Cover / Selimut - CleanLaundry</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background-color: #f8fafc; color: #1e293b; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .detail-card { background: white; max-width: 500px; width: 100%; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
-        .back-link { display: inline-flex; align-items: center; gap: 8px; color: #0284c7; text-decoration: none; font-weight: 600; font-size: 0.85rem; margin-bottom: 20px; }
-        .detail-card h1 { font-size: 1.5rem; color: #0f172a; margin-bottom: 10px; }
-        .price-tag { font-size: 1.4rem; font-weight: 700; color: #0284c7; margin-bottom: 20px; }
-        .desc-box { font-size: 0.95rem; color: #475569; line-height: 1.6; margin-bottom: 25px; }
-        .desc-box ul { padding-left: 20px; margin-top: 10px; }
-        .desc-box li { margin-bottom: 6px; }
-        .wa-order-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background-color: #25d366; color: white; padding: 14px; border-radius: 12px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); }
-    </style>
+    <title>Bed Cover & Selimut - Laundry God</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="detail-card">
-        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda</a>
+
+    <!-- Header Mini Detail -->
+    <div class="detail-header">
+        <a href="index.html" class="btn-back">← Kembali ke Beranda</a>
+        <span class="badge-tag">Perawatan Khusus</span>
         <h1>Bed Cover / Selimut / Sprei</h1>
-        <div class="price-tag">Rp 15.000 <span style="font-size:0.9rem; font-weight:normal;">/kg</span></div>
-        <div class="desc-box">
-            <p>Perawatan khusus untuk barang berukuran besar seperti bed cover, selimut tebal, sprei, dan gorden agar terhindar dari tungau dan debu.</p>
-            <ul>
-                <li>Pencucian mendalam menggunakan mesin kapasitas besar</li>
-                <li>Pengeringan maksimal bebas lembab</li>
-                <li>Wangi antibakteri tahan lama</li>
-                <li>Gratis layanan antar jemput</li>
-            </ul>
-        </div>
-        <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20pesan%20layanan%20Bed%20Cover%20(Rp15.000/kg)." class="wa-order-btn" target="_blank">
-            <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Pesan Paket Ini Sekarang
-        </a>
+        <div class="detail-price">Rp 15.000 <span>/kg</span></div>
     </div>
+
+    <div class="detail-container">
+        
+        <!-- Ringkasan Singkat -->
+        <p class="detail-desc">
+            Perawatan khusus untuk barang berukuran besar seperti bed cover, selimut tebal, sprei, dan gorden agar terhindar dari tungau, bakteri, dan debu.
+        </p>
+
+        <!-- Keunggulan Layanan -->
+        <div class="detail-features-grid">
+            <div class="df-card">
+                <span class="df-icon">🧺</span>
+                <div>
+                    <h4>Mesin Kapasitas Besar</h4>
+                    <p>Pencucian mendalam, bersih merata hingga serat terdalam.</p>
+                </div>
+            </div>
+            <div class="df-card">
+                <span class="df-icon">☀️</span>
+                <div>
+                    <h4>Pengeringan Maksimal</h4>
+                    <p>Bebas lembab, dijamin tidak bau apek saat digunakan.</p>
+                </div>
+            </div>
+            <div class="df-card">
+                <span class="df-icon">🛡️</span>
+                <div>
+                    <h4>Wangi & Antibakteri</h4>
+                    <p>Formula khusus pembunuh tungau dan harum tahan lama.</p>
+                </div>
+            </div>
+            <div class="df-card">
+                <span class="df-icon">🚚</span>
+                <div>
+                    <h4>Antar Jemput Gratis</h4>
+                    <p>Gak perlu repot bawa barang berat, kami yang jemput.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alur Pengerjaan -->
+        <div class="process-section">
+            <h3>Alur Layanan</h3>
+            <div class="process-steps">
+                <div class="step"><span>1</span> Penjemputan</div>
+                <div class="step"><span>2</span> Cuci & Pengeringan</div>
+                <div class="step"><span>3</span> Pengantaran</div>
+            </div>
+        </div>
+
+        <!-- Tombol Order Tunggal -->
+        <a href="https://wa.me/6281234567890?text=Halo%20Laundry%20God,%20saya%20mau%20order%20Cuci%20Bed%20Cover%20/%20Selimut" target="_blank" class="btn-order-detail">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" width="20">
+            Pesan Layanan Ini via WA
+        </a>
+
+    </div>
+
 </body>
 </html>
