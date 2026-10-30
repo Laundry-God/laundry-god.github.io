@@ -3,39 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Cuci + Setrika - CleanLaundry</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background-color: #f8fafc; color: #1e293b; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .detail-card { background: white; max-width: 500px; width: 100%; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
-        .back-link { display: inline-flex; align-items: center; gap: 8px; color: #0284c7; text-decoration: none; font-weight: 600; font-size: 0.85rem; margin-bottom: 20px; }
-        .detail-card h1 { font-size: 1.5rem; color: #0f172a; margin-bottom: 10px; }
-        .price-tag { font-size: 1.4rem; font-weight: 700; color: #0284c7; margin-bottom: 20px; }
-        .desc-box { font-size: 0.95rem; color: #475569; line-height: 1.6; margin-bottom: 25px; }
-        .desc-box ul { padding-left: 20px; margin-top: 10px; }
-        .desc-box li { margin-bottom: 6px; }
-        .wa-order-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background-color: #25d366; color: white; padding: 14px; border-radius: 12px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); }
-    </style>
+    <title>Cuci + Setrika Uap - Laundry God</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="detail-card">
-        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda</a>
+
+    <!-- Header Mini Detail -->
+    <div class="detail-header">
+        <a href="index.html" class="btn-back">← Kembali ke Beranda</a>
+        <span class="badge-tag">Paket Komplit</span>
         <h1>Cuci + Setrika Uap</h1>
-        <div class="price-tag">Rp 9.000 <span style="font-size:0.9rem; font-weight:normal;">/kg</span></div>
-        <div class="desc-box">
-            <p>Paket komplit cuci bersih dilanjutkan dengan proses setrika uap profesional agar pakaian rapi sempurna, bebas kusut, dan wangi tahan lama.</p>
-            <ul>
-                <li>Setrika uap aman untuk berbagai jenis kain</li>
-                <li>Lipatan rapi dan dikemas dengan plastik pelindung</li>
-                <li>Estimasi selesai: 24 Jam</li>
-                <li>Gratis layanan antar jemput</li>
-            </ul>
-        </div>
-        <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20mau%20pesan%20layanan%20Cuci%20%2B%20Setrika%20(Rp9.000/kg)." class="wa-order-btn" target="_blank">
-            <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Pesan Paket Ini Sekarang
-        </a>
+        <div class="detail-price">Rp 9.000 <span>/kg</span></div>
     </div>
+
+    <div class="detail-container">
+        
+        <!-- Ringkasan Singkat -->
+        <p class="detail-desc">
+            Paket komplit cuci bersih dilanjutkan dengan proses setrika uap profesional agar pakaian rapi sempurna, bebas kusut, licin, dan wangi tahan lama.
+        </p>
+
+        <!-- Keunggulan Layanan -->
+        <div class="detail-features-grid">
+            <div class="df-card">
+                <span class="df-icon">💨</span>
+                <div>
+                    <h4>Setrika Uap Aman</h4>
+                    <p>Melindungi serat kain agar tidak terbakar & licin sempurna.</p>
+                </div>
+            </div>
+            <div class="df-card">
+                <span class="df-icon">✨</span>
+                <div>
+                    <h4>Rapi & Packing Plastik</h4>
+                    <p>Lipatan presisi dan dikemas rapi terlindung dari debu.</p>
+                </div>
+            </div>
+            <div class="df-card">
+                <span class="df-icon">⏱️</span>
+                <div>
+                    <h4>Selesai 24 Jam</h4>
+                    <p>Proses pengerjaan cepat dan tepat waktu.</p>
+                </div>
+            </div>
+            <div class="df-card">
+                <span class="df-icon">🚚</span>
+                <div>
+                    <h4>Antar Jemput Gratis</h4>
+                    <p>Siap diambil dan diantar balik langsung ke depan pintu.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alur Pengerjaan -->
+        <div class="process-section">
+            <h3>Alur Layanan</h3>
+            <div class="process-steps">
+                <div class="step"><span>1</span> Penjemputan</div>
+                <div class="step"><span>2</span> Cuci & Setrika Uap</div>
+                <div class="step"><span>3</span> Pengantaran</div>
+            </div>
+        </div>
+
+        <!-- Tombol Order Tunggal -->
+        <a href="https://wa.me/6283187521130?text=Halo%20Laundry%20God,%20saya%20mau%20order%20Cuci%20%2B%20Setrika%20Uap" target="_blank" class="btn-order-detail">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" width="20">
+            Pesan Paket Ini via WA
+        </a>
+
+    </div>
+
 </body>
 </html>
