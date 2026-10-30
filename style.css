@@ -69,3 +69,10 @@ body {
     background-color: #128c7e;
 }
 
+/* Buat ngerapihin link di dalam kartu */
+.price-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
