@@ -319,3 +319,106 @@ footer strong {
     margin: 0;
 }
 
+/* Seksi Kalkulator Harga */
+.calculator-section {
+    padding: 2.5rem 1rem;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.calculator-section h2 {
+    font-size: 1.4rem;
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+}
+
+.calc-subtitle {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 1.5rem;
+}
+
+.calc-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.5rem;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.calc-group {
+    margin-bottom: 1.25rem;
+}
+
+.calc-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 0.5rem;
+}
+
+.calc-group select,
+.calc-group input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #0f172a;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.calc-group select:focus,
+.calc-group input:focus {
+    border-color: #2563eb;
+}
+
+.calc-result {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e0f2fe;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1.25rem;
+}
+
+.calc-result span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #0369a1;
+}
+
+.calc-result h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #0284c7;
+    margin: 0;
+}
+
+.btn-calc-order {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #2563eb;
+    color: #ffffff;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease;
+}
+
+.btn-calc-order:hover {
+    background-color: #1d4ed8;
+}
+
