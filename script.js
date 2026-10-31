@@ -27,7 +27,7 @@ function hitungEstimasi() {
         const pesan = `Halo Laundry God, saya mau pesan:\n- Layanan: ${namaLayanan}\n- Berat: ${berat} kg\n- Total Estimasi: ${totalFormatted}`;
         
         // Pasang link WA yang valid
-        waBtn.href = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
+        waBtn.href = `https://wa.me/${6283187521130}?text=${encodeURIComponent(pesan)}`;
     }
 }
 
