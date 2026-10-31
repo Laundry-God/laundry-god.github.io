@@ -79,3 +79,32 @@ function tampilkanToast() {
 setTimeout(tampilkanToast, 3000);
 setInterval(tampilkanToast, 10000);
 
+// --- LOGIKA DARK / LIGHT MODE ---
+document.addEventListener("DOMContentLoaded", function() {
+    const themeBtn = document.getElementById("theme-toggle");
+    const themeIcon = document.getElementById("theme-icon");
+    const currentTheme = localStorage.getItem("theme");
+
+    // Cek apakah sebelumnya user udah set dark mode
+    if (currentTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        if (themeIcon) themeIcon.innerText = "☀️";
+    }
+
+    if (themeBtn) {
+        themeBtn.addEventListener("click", function() {
+            document.body.classList.toggle("dark-mode");
+            
+            let theme = "light";
+            if (document.body.classList.contains("dark-mode")) {
+                theme = "dark";
+                if (themeIcon) themeIcon.innerText = "☀️";
+            } else {
+                if (themeIcon) themeIcon.innerText = "🌙";
+            }
+            
+            // Simpan pilihan ke memori browser
+            localStorage.setItem("theme", theme);
+        });
+    }
+});
