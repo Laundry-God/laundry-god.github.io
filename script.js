@@ -157,3 +157,27 @@ document.addEventListener("DOMContentLoaded", function() {
     mulaiToastOtomatis();
     
 });
+
+// --- 7. LOGIKA ACCORDION FAQ (BUKA TUTUP) ---
+function initAccordionFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Tutup FAQ lain jika ingin satu per satu yang terbuka (opsional)
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+
+            // Buka atau tutup FAQ yang diklik
+            this.classList.toggle('active');
+        });
+    });
+}
+
+// Panggil fungsi saat web siap
+document.addEventListener("DOMContentLoaded", function() {
+    initAccordionFAQ();
+});
