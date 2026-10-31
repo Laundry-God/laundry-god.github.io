@@ -182,3 +182,66 @@ function initAccordionFAQ() {
 document.addEventListener("DOMContentLoaded", function() {
     initAccordionFAQ();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const userDropdown = document.getElementById('userDropdown');
+  const inputNamaUser = document.getElementById('inputNamaUser');
+  const btnSimpanNama = document.getElementById('btnSimpanNama');
+  
+  // 1. Load Nama Terakhir dari LocalStorage
+  if (localStorage.getItem('user_laundry_name')) {
+    inputNamaUser.value = localStorage.getItem('user_laundry_name');
+  }
+
+  // 2. Toggle Buka / Tutup Dropdown Garis Tiga
+  if (hamburgerBtn && userDropdown) {
+    hamburgerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      userDropdown.classList.toggle('active');
+    });
+
+    // Klik luar dropdown buat nutup
+    document.addEventListener('click', (e) => {
+      if (!userDropdown.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+        userDropdown.classList.remove('active');
+      }
+    });
+  }
+
+  // 3. Simpan Nama
+  if (btnSimpanNama) {
+    btnSimpanNama.addEventListener('click', () => {
+      const nama = inputNamaUser.value.trim();
+      if (nama) {
+        localStorage.setItem('user_laundry_name', nama);
+        alert(`Nama '${nama}' berhasil disimpan!`);
+        userDropdown.classList.remove('active');
+      } else {
+        alert('Masukkan nama kamu dulu bro!');
+      }
+    });
+  }
+
+  // 4. Trigger Pop-Up Notifikasi Pas Klik "Pesan Hasil Estimasi via WA"
+  const btnPesanWA = document.querySelector('.estimasi-section button, #btnPesanWA, [class*="btn-pesan"]'); 
+  // Adjust selector di atas sesuai class/id tombol WA lu di HTML
+
+  if (btnPesanWA) {
+    btnPesanWA.addEventListener('click', () => {
+      const savedName = localStorage.getItem('user_laundry_name') || 'Kamu';
+      const selectLayanan = document.querySelector('select');
+      const inputBerat = document.querySelector('input[type="number"]');
+
+      const namaLayanan = selectLayanan ? selectLayanan.options[selectLayanan.selectedIndex].text.split('-')[0].trim() : 'Laundry';
+      const berat = inputBerat ? inputBerat.value : '1';
+
+      // Panggil fungsi Notifikasi Live Toast lu dengan nama user
+      if (typeof showToastNotification === 'function') {
+        showToastNotification(savedName, `Baru saja memesan ${namaLayanan} ${berat}kg`);
+      } else if (typeof showToast === 'function') {
+        showToast(`${savedName} baru saja memesan ${namaLayanan} ${berat}kg`);
+      }
+    });
+  }
+});
