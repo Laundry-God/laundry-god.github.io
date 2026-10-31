@@ -19,7 +19,7 @@ function hitungEstimasi() {
     const waBtn = document.getElementById("wa-link");
     if (waBtn) {
         const pesan = `Halo Laundry God, saya mau pesan ${layanan} dengan berat ${berat} kg. Total estimasi: Rp ${total.toLocaleString("id-ID")}`;
-        waBtn.href = `https://wa.me/628XXXXXXXXXX?text=${encodeURIComponent(pesan)}`;
+        waBtn.href = `https://wa.me/6283187521130?text=${encodeURIComponent(pesan)}`;
     }
 }
 
