@@ -178,121 +178,78 @@ function initAccordionFAQ() {
     });
 }
 
-// Panggil fungsi saat web siap
-document.addEventListener("DOMContentLoaded", function() {
-    initAccordionFAQ();
-});
+// ==========================================
+// ADD-ON: SIMPAN NAMA USER & CUSTOM TOAST
+// ==========================================
 
-document.addEventListener('DOMContentLoaded', () => {
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const userDropdown = document.getElementById('userDropdown');
-  const inputNamaUser = document.getElementById('inputNamaUser');
-  const btnSimpanNama = document.getElementById('btnSimpanNama');
-  
-  // 1. Load Nama Terakhir dari LocalStorage
-  if (localStorage.getItem('user_laundry_name')) {
-    inputNamaUser.value = localStorage.getItem('user_laundry_name');
-  }
+// 1. Ambil Elemen Garis Tiga & Dropdown
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const userDropdown = document.getElementById('userDropdown');
+const inputNamaUser = document.getElementById('inputNamaUser');
+const btnSimpanNama = document.getElementById('btnSimpanNama');
 
-  // 2. Toggle Buka / Tutup Dropdown Garis Tiga
-  if (hamburgerBtn && userDropdown) {
-    hamburgerBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      userDropdown.classList.toggle('active');
-    });
+// Auto-fill nama jika sudah tersimpan sebelumnya
+if (inputNamaUser && localStorage.getItem('user_laundry_name')) {
+  inputNamaUser.value = localStorage.getItem('user_laundry_name');
+}
 
-    // Klik luar dropdown buat nutup
-    document.addEventListener('click', (e) => {
-      if (!userDropdown.contains(e.target) && !hamburgerBtn.contains(e.target)) {
-        userDropdown.classList.remove('active');
-      }
-    });
-  }
+// Buka/Tutup Dropdown Garis Tiga
+if (hamburgerBtn && userDropdown) {
+  hamburgerBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    userDropdown.classList.toggle('active');
+  });
 
-  // 3. Simpan Nama
-  if (btnSimpanNama) {
-    btnSimpanNama.addEventListener('click', () => {
-      const nama = inputNamaUser.value.trim();
-      if (nama) {
-        localStorage.setItem('user_laundry_name', nama);
-        alert(`Nama '${nama}' berhasil disimpan!`);
-        userDropdown.classList.remove('active');
-      } else {
-        alert('Masukkan nama kamu dulu bro!');
-      }
-    });
-  }
+  document.addEventListener('click', (e) => {
+    if (!userDropdown.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+      userDropdown.classList.remove('active');
+    }
+  });
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const userDropdown = document.getElementById('userDropdown');
-  const inputNamaUser = document.getElementById('inputNamaUser');
-  const btnSimpanNama = document.getElementById('btnSimpanNama');
+// Simpan Nama ke LocalStorage
+if (btnSimpanNama) {
+  btnSimpanNama.addEventListener('click', () => {
+    const namaInput = inputNamaUser.value.trim();
+    if (namaInput) {
+      localStorage.setItem('user_laundry_name', namaInput);
+      alert(`Nama '${namaInput}' berhasil disimpan!`);
+      if (userDropdown) userDropdown.classList.remove('active');
+    } else {
+      alert('Isi nama kamu dulu, bro!');
+    }
+  });
+}
 
-  // 1. Auto-load Nama dari LocalStorage pas halaman dibuka
-  if (localStorage.getItem('user_laundry_name') && inputNamaUser) {
-    inputNamaUser.value = localStorage.getItem('user_laundry_name');
-  }
+// 2. Override Notifikasi Toast Pas Klik 'Pesan Hasil Estimasi via WA'
+const btnPesanWA = document.querySelector('.estimasi-section button, #btnPesanWA, [class*="btn-pesan"]');
 
-  // 2. Toggle Buka-Tutup Menu Garis Tiga
-  if (hamburgerBtn && userDropdown) {
-    hamburgerBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      userDropdown.classList.toggle('active');
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!userDropdown.contains(e.target) && !hamburgerBtn.contains(e.target)) {
-        userDropdown.classList.remove('active');
-      }
-    });
-  }
-
-  // 3. Simpan Nama ke LocalStorage & Tutup Dropdown
-  if (btnSimpanNama) {
-    btnSimpanNama.addEventListener('click', () => {
-      const nama = inputNamaUser.value.trim();
-      if (nama) {
-        localStorage.setItem('user_laundry_name', nama);
-        alert(`Nama '${nama}' berhasil disimpan!`);
-        userDropdown.classList.remove('active');
-      } else {
-        alert('Isi nama kamu dulu, bro!');
-      }
-    });
-  }
-
-  // 4. EMBAT langsung tombol 'Pesan Hasil Estimasi via WA'
-  // Mencari tombol hijau WA di kalkulator
-  const btnPesanWA = document.querySelector('.estimasi-section button, a[href*="wa.me"], button[onclick*="wa"]');
-
-  if (btnPesanWA) {
-    btnPesanWA.addEventListener('click', () => {
-      // Ambil nama yang disimpan (default 'Yoga' kalau belum diset)
-      const namaUser = localStorage.getItem('user_laundry_name') || 'Yoga';
-      
-      const selectLayanan = document.querySelector('select');
-      const inputBerat = document.querySelector('input[type="number"]');
-
-      const layananText = selectLayanan ? selectLayanan.options[selectLayanan.selectedIndex].text.split('-')[0].trim() : 'Laundry';
-      const beratText = inputBerat ? inputBerat.value + 'kg' : '3kg';
-
-      // Paksa ubah isi elemen Toast Notifikasi yang di bawah
-      const toastElement = document.querySelector('.notification-toast, [class*="toast"]');
-      if (toastElement) {
-        toastElement.innerHTML = `
-          <div style="display:flex; align-items:center; gap:10px;">
-            <span style="color:#22c55e; font-size:1.2rem;">🟢</span>
-            <div style="text-align:left;">
-              <strong style="color:#0f172a; font-size:0.9rem;">${namaUser}</strong><br>
-              <small style="color:#64748b; font-size:0.75rem;">Baru saja memesan ${layananText} ${beratText}</small>
-            </div>
-          </div>
-        `;
-        toastElement.style.display = 'block';
-        toastElement.classList.add('show');
-      }
-    });
-  }
-});
+if (btnPesanWA) {
+  btnPesanWA.addEventListener('click', () => {
+    // Ambil nama user tersimpan (default 'Yoga' jika belum diisi)
+    const namaAktif = localStorage.getItem('user_laundry_name') || 'Yoga';
     
+    const selectLayanan = document.querySelector('select');
+    const inputBerat = document.querySelector('input[type="number"]');
+
+    const txtLayanan = selectLayanan ? selectLayanan.options[selectLayanan.selectedIndex].text.split('-')[0].trim() : 'Laundry';
+    const txtBerat = inputBerat ? inputBerat.value + 'kg' : '3kg';
+
+    // Cari elemen Toast Notifikasi yang udah ada di web lu
+    const toastElem = document.querySelector('.notification-toast, [class*="toast"]');
+    
+    if (toastElem) {
+      toastElem.innerHTML = `
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="color:#22c55e; font-size:1.2rem;">🟢</span>
+          <div style="text-align:left;">
+            <strong style="color:#0f172a; font-size:0.875rem; display:block;">${namaAktif}</strong>
+            <small style="color:#64748b; font-size:0.75rem;">Baru saja memesan ${txtLayanan} ${txtBerat}</small>
+          </div>
+        </div>
+      `;
+      toastElem.style.display = 'block';
+      toastElem.classList.add('show');
+    }
+  });
+}
