@@ -75,41 +75,49 @@ document.addEventListener("DOMContentLoaded", function() {
     setTimeout(munculkanToast, 3000);
 });
 
-// --- 5. BIKIN TOMBOL WA BISA DIGESER (DRAGGABLE DI HP) ---
+// --- 5. BIKIN TOMBOL WA DIGESER SUPER SMOOTH (60FPS GPU ACCELERATED) ---
 const waBtn = document.getElementById("btn-float-wa");
 let isDragging = false;
-let startX, startY, initialX, initialY;
+let currentX = 0, currentY = 0;
+let initialX = 0, initialY = 0;
+let xOffset = 0, yOffset = 0;
 
 if (waBtn) {
     waBtn.addEventListener('touchstart', function(e) {
+        initialX = e.touches[0].clientX - xOffset;
+        initialY = e.touches[0].clientY - yOffset;
         isDragging = false;
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-        initialX = waBtn.offsetLeft;
-        initialY = waBtn.offsetTop;
-    }, { passive: true });
+    }, { passive: false });
 
     waBtn.addEventListener('touchmove', function(e) {
-        let moveX = e.touches[0].clientX - startX;
-        let moveY = e.touches[0].clientY - startY;
+        let currentTouchX = e.touches[0].clientX - initialX;
+        let currentTouchY = e.touches[0].clientY - initialY;
         
-        // Kalau jari ngegeser lebih dari 10px, eksekusi pindah posisi
-        if (Math.abs(moveX) > 10 || Math.abs(moveY) > 10) {
+        // Kalau geser dikit aja, anggap lagi nge-drag
+        if (Math.abs(currentTouchX) > 5 || Math.abs(currentTouchY) > 5) {
             isDragging = true;
-            e.preventDefault(); // Tahan layar biar gak ikut ke-scroll
-            waBtn.style.left = (initialX + moveX) + "px";
-            waBtn.style.top = (initialY + moveY) + "px";
-            waBtn.style.bottom = "auto";
-            waBtn.style.right = "auto";
+            e.preventDefault(); // Biar layar nggak ikut ke-scroll
+            
+            currentX = currentTouchX;
+            currentY = currentTouchY;
+            
+            // Pake translate3d biar dibantu GPU (hasilnya 60fps halus banget)
+            waBtn.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
         }
     }, { passive: false });
 
-    // Cegah buka WA kalau niatnya cuma ngegeser tombol
     waBtn.addEventListener('touchend', function(e) {
-        if (isDragging) e.preventDefault(); 
+        initialX = currentX;
+        initialY = currentY;
+        xOffset = currentX;
+        yOffset = currentY;
     });
+
     waBtn.addEventListener('click', function(e) {
-        if (isDragging) e.preventDefault();
+        // Kalau abis digeser, jangan buka WA
+        if (isDragging) {
+            e.preventDefault();
+        }
     });
 }
 
