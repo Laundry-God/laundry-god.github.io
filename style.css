@@ -1182,3 +1182,22 @@ footer a {
     border-color: #2563eb !important;
 }
 
+/* FIX KARTU LONCAT PAS DIKLIK DI HP */
+.services-grid .card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* Di HP (Mobile): Efek pencet dibuat halus cuma 2px biar gak nimbun judul */
+.services-grid .card:active,
+.services-grid .card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.12) !important;
+    border-color: #2563eb !important;
+}
+
+/* Di Desktop: Efek hover melayang normal 4px */
+@media (min-width: 768px) {
+    .services-grid .card:hover {
+        transform: translateY(-4px) !important;
+    }
+}
