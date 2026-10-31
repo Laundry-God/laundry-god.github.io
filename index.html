@@ -8,16 +8,24 @@
 </head>
 <body>
 
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo">
+            <span>🧺</span> <strong>Laundry God</strong>
+        </div>
+        <span id="status-buka" class="badge-status">🟢 Buka Hari Ini</span>
+    </header>
+
     <!-- HERO BANNER -->
     <section class="hero">
         <div class="hero-content">
             <h1>Laundry Kiloan Cepat & Wangi</h1>
             <p>Antar Jemput Gratis — Cucian bersih, wangi, dan rapi. Diantar jemput langsung ke tempatmu, gratis tanpa biaya tambahan.</p>
-            <p>Respon cepat • Chat sekarang • Gratis pick up & delivery</p>
+            <p class="hero-sub">Respon cepat • Chat sekarang • Gratis pick up & delivery</p>
         </div>
     </section>
 
-    <!-- SECTION 1: LAYANAN -->
+    <!-- KARTU LAYANAN -->
     <section class="container">
         <div class="section-title">
             <span class="badge">PILIHAN LAYANAN</span>
@@ -25,34 +33,33 @@
             <p>Harga transparan tanpa biaya tersembunyi. Klik layanan untuk lihat detail lengkap & promonya!</p>
         </div>
 
-                <div class="services-grid">
+        <div class="services-grid">
             <div class="card" onclick="pilihLayanan('6000')">
                 <h3>Cuci Kiloan</h3>
                 <p class="price">Rp 6.000 <span>/kg</span></p>
                 <p>Cuci bersih + deterjen wangi</p>
-                <small style="color: #2563eb; font-weight: bold;">👇 Klik untuk Pilih Paket</small>
+                <small class="card-btn-hint">👇 Klik untuk Pilih Paket</small>
             </div>
             <div class="card" onclick="pilihLayanan('9000')">
                 <h3>Cuci + Setrika</h3>
                 <p class="price">Rp 9.000 <span>/kg</span></p>
                 <p>Cuci + setrika rapi, wangi tahan lama</p>
-                <small style="color: #2563eb; font-weight: bold;">👇 Klik untuk Pilih Paket</small>
+                <small class="card-btn-hint">👇 Klik untuk Pilih Paket</small>
             </div>
             <div class="card" onclick="pilihLayanan('15000')">
                 <h3>Bed Cover / Selimut</h3>
                 <p class="price">Rp 15.000 <span>/pcs</span></p>
                 <p>Bersih, higienis, wangi</p>
-                <small style="color: #2563eb; font-weight: bold;">👇 Klik untuk Pilih Paket</small>
+                <small class="card-btn-hint">👇 Klik untuk Pilih Paket</small>
             </div>
         </div>
-
     </section>
 
-    <!-- SECTION 2: FITUR, KALKULATOR, & FAQ (3 KOLOM DIBATASI CUMA SAMPAI SINI) -->
+    <!-- BAGIAN TENGAH (FITUR, KALKULATOR, FAQ) -->
     <section class="container">
         <div class="features-calc-grid">
             
-            <!-- Kolom 1: Kenapa Pilih -->
+            <!-- Kolom 1: Fitur -->
             <div class="column-box">
                 <h3>Kenapa Pilih Laundry God?</h3>
                 <div class="feature-item">
@@ -73,10 +80,10 @@
                 </div>
             </div>
 
-            <!-- Kolom 2: Kalkulator Estimasi -->
-            <div class="column-box calculator-card">
+            <!-- Kolom 2: Kalkulator -->
+            <div class="column-box calculator-card" id="area-kalkulator">
                 <h3>Hitung Estimasi Biaya</h3>
-                <p class="subtitle">Pilih layanan dan masukkan perkiraan berat pakaianmu</p>
+                <p class="subtitle" style="font-size: 13px; color: #64748b; margin-bottom: 15px;">Pilih layanan dan masukkan perkiraan berat pakaianmu</p>
 
                 <label for="layanan">Pilih Layanan:</label>
                 <select id="layanan" onchange="hitungEstimasi()">
@@ -101,14 +108,14 @@
                 <h3>Pertanyaan Sering Diajukan (FAQ)</h3>
                 <div class="faq-item">
                     <h4>Berapa lama proses pengerjaan cuci kiloan?</h4>
-                    <p>Untuk layanan reguler memakan waktu 2x24 jam. Kami juga menyediakan layanan kilat/express 24 jam dengan biaya tambahan.</p>
+                    <p>Untuk layanan reguler memakan waktu 2x24 jam. Kami juga menyediakan layanan kilat 24 jam dengan biaya tambahan.</p>
                 </div>
                 <div class="faq-item">
                     <h4>Bagaimana cara kerja layanan Antar Jemput Gratis?</h4>
-                    <p>Tim kurir kami akan menjemput pakaian kotor langsung ke lokasi rumah/kost kamu dan mengantarkannya kembali setelah selesai diproses. Cukup hubungi kami via WhatsApp!</p>
+                    <p>Tim kurir kami akan menjemput pakaian kotor langsung ke lokasi kamu dan mengantarkannya kembali setelah selesai. Cukup WA!</p>
                 </div>
                 <div class="faq-item">
-                    <h4>Apakah ada minimal berat untuk cuci kiloan?</h4>
+                    <h4>Apakah ada minimal berat?</h4>
                     <p>Tidak ada minimal berat! Berapa pun berat pakaianmu siap kami proses.</p>
                 </div>
                 <div class="faq-item">
@@ -117,10 +124,10 @@
                 </div>
             </div>
 
-        </div> <!-- TAG PENUTUP GRID 3 KOLOM -->
+        </div>
     </section>
 
-    <!-- SECTION 3: TESTIMONI (BEBAS DARI 3 KOLOM) -->
+    <!-- TESTIMONI -->
     <section class="container">
         <div class="section-title">
             <h2>Apa Kata Pelanggan Kami?</h2>
@@ -128,41 +135,45 @@
         <div class="testimonial-grid">
             <div class="card">
                 <p>⭐⭐⭐⭐⭐</p>
-                <p>"Antar jemputnya cepet banget! Pakaian wangi tahan lama dan lipatannya rapi. Cocok banget buat anak kost yang gak sempat nyuci."</p>
-                <strong>Rizky Pratama</strong> <br>
-                <small>Mahasiswa</small>
+                <p>"Antar jemputnya cepet banget! Pakaian wangi tahan lama dan lipatannya rapi. Cocok banget buat anak kost."</p>
+                <strong style="display:block; margin-top:10px;">Rizky Pratama</strong>
+                <small style="color: #64748b;">Mahasiswa</small>
             </div>
             <div class="card">
                 <p>⭐⭐⭐⭐⭐</p>
-                <p>"Bedcover raksasa diselesaiin tepat waktu dan bersih banget dari noda. Pelayanan via WA-nya juga ramah dan respon cepat."</p>
-                <strong>Siti Sarah</strong> <br>
-                <small>Ibu Rumah Tangga</small>
+                <p>"Bedcover raksasa diselesaiin tepat waktu dan bersih banget dari noda. Pelayanan via WA-nya juga ramah."</p>
+                <strong style="display:block; margin-top:10px;">Siti Sarah</strong>
+                <small style="color: #64748b;">Ibu Rumah Tangga</small>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER LEGAL & KONTAK (BEBAS DI PALING BAWAH 100% LEBAR) -->
+    <!-- FOOTER -->
     <footer class="site-footer">
         <p><strong>Laundry God — Layanan Laundry Profesional</strong></p>
-        <p>Jl. Contoh No. 123, Bandung, Jawa Barat | WA: 0812-3456-7890</p>
+        <p>Jl. Contoh No. 123, Ngawi, Jawa Timur | WA: 0831-8752-1130</p>
         <div class="footer-links">
             <a href="privacy.html">Privacy Policy</a> | 
             <a href="terms.html">Terms of Service</a> | 
-            <a href="https://wa.me/6281234567890" target="_blank">Contact Us</a>
+            <a href="https://wa.me/6283187521130" target="_blank">Contact Us</a>
         </div>
         <p class="copyright">&copy; 2026 Laundry God. All rights reserved.</p>
     </footer>
 
-    <!-- NOTIFIKASI TOAST DUMMY -->
+    <!-- TOMBOL WA MELAYANG -->
+    <a href="https://wa.me/6283187521130" class="btn-float-wa" target="_blank" aria-label="Chat WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" width="30">
+    </a>
+
+    <!-- TOAST NOTIFIKASI DUMMY -->
     <div id="toast" class="toast-notification">
-        <span style="font-size: 12px;">🟢</span>
-        <div>
+        <span class="toast-dot">🟢</span>
+        <div class="toast-content">
             <strong id="toast-nama">Ahmad (Bandung)</strong>
             <span id="toast-pesanan">Baru saja memesan Cuci Kiloan 4kg</span>
         </div>
     </div>
 
-    <!-- MANGGIL FILE JS TERPISAH -->
     <script src="script.js"></script>
 </body>
 </html>
