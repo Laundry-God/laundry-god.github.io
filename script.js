@@ -1,27 +1,57 @@
-// --- LOGIKA KALKULATOR ESTIMASI ---
 function hitungEstimasi() {
-    const layanan = document.getElementById("layanan").value;
-    const berat = parseFloat(document.getElementById("berat").value) || 0;
+    // Mengambil nilai dari input HTML
+    const layanan = document.getElementById("layanan") ? document.getElementById("layanan").value : "";
+    const beratInput = document.getElementById("berat");
+    const berat = beratInput ? (parseFloat(beratInput.value) || 0) : 0;
+    
     let hargaPerKg = 0;
 
+    // Logika penentuan harga berdasarkan pilihan layanan
     if (layanan === "kiloan") {
         hargaPerKg = 6000;
     } else if (layanan === "express") {
         hargaPerKg = 9000;
     } else if (layanan === "setrika") {
         hargaPerKg = 5000;
+    } else if (layanan === "bedcover" || layanan.includes("Bed Cover")) {
+        hargaPerKg = 15000;
+    } else {
+        // Jika value di option berupa angka harga langsung
+        hargaPerKg = parseFloat(layanan) || 6000;
     }
 
     const total = hargaPerKg * berat;
-    document.getElementById("total-harga").innerText = "Rp " + total.toLocaleString("id-ID");
+    
+    // Format rupiah
+    const totalFormatted = "Rp " + total.toLocaleString("id-ID");
 
-    // Link WhatsApp Dinamis
+    // Cari ID 'total' ATAU 'total-harga' biar dua-duanya aman
+    const elemTotal = document.getElementById("total") || document.getElementById("total-harga");
+    if (elemTotal) {
+        elemTotal.innerText = totalFormatted;
+    }
+
+    // Update Link WA
     const waBtn = document.getElementById("wa-link");
     if (waBtn) {
-        const pesan = `Halo Laundry God, saya mau pesan ${layanan} dengan berat ${berat} kg. Total estimasi: Rp ${total.toLocaleString("id-ID")}`;
+        const pesan = `Halo Laundry God, saya mau pesan ${layanan} (${berat} kg). Total estimasi: ${totalFormatted}`;
         waBtn.href = `https://wa.me/6283187521130?text=${encodeURIComponent(pesan)}`;
     }
 }
+
+// Pasang Event Listener otomatis biar pas ngetik angka langsung berubah
+document.addEventListener("DOMContentLoaded", function() {
+    const inputBerat = document.getElementById("berat");
+    const selectLayanan = document.getElementById("layanan");
+
+    if (inputBerat) {
+        inputBerat.addEventListener("input", hitungEstimasi);
+    }
+    if (selectLayanan) {
+        selectLayanan.addEventListener("change", hitungEstimasi);
+    }
+});
+
 
 // --- LOGIKA NOTIFIKASI DUMMY (TOAST) ---
 const dataPesanan = [
