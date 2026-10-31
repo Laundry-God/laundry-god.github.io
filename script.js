@@ -1,3 +1,18 @@
+// Fungsi jika kartu paket diklik -> Otomatis pilih layanan di kalkulator & scroll ke bawah
+function pilihLayanan(nilaiHarga) {
+    const selectLayanan = document.getElementById("layanan");
+    if (selectLayanan) {
+        selectLayanan.value = nilaiHarga;
+        hitungEstimasi(); // Hitung ulang harga
+        
+        // Scroll halus ke area kalkulator
+        const calcCard = document.querySelector('.calculator-card');
+        if (calcCard) {
+            calcCard.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+}
+
 function hitungEstimasi() {
     // 1. Ambil elemen input
     const selectLayanan = document.getElementById("layanan");
