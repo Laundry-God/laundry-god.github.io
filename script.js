@@ -141,7 +141,7 @@ function mulaiToastOtomatis() {
         
         setTimeout(() => {
             toast.classList.remove("show");
-        }, 8000);
+        }, 4000);
         
     }, 8000);
 }
@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-        // EKSEKUSI: HANYA PAS KLIK TOMBOL "Pesan Hasil Estimasi via WA" TOAST NAMA MUNCUL!
+    // EKSEKUSI: HANYA PAS KLIK TOMBOL "Pesan Hasil Estimasi via WA" TOAST NAMA MUNCUL!
     const waEstimasiBtn = document.getElementById("wa-link");
     if (waEstimasiBtn) {
         waEstimasiBtn.addEventListener('click', function() {
@@ -232,13 +232,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 namaEl.innerText = savedName;
                 pesananEl.innerText = `Baru saja memesan ${namaLayanan} ${berat}kg`;
                 
-                // Tampilkan toast
+                // Tampilkan toast kustom persis saat klik
                 toast.classList.add("show");
 
-                // Gua ubah jadi 8000ms (8 detik) biar makin lama keliatan!
                 setTimeout(() => {
                     toast.classList.remove("show");
                 }, 8000);
             }
         });
     }
+});
