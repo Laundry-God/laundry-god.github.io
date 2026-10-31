@@ -1092,25 +1092,51 @@ div.section-title-wrap p {
     margin-bottom: 40px;
 }
 
-/* Footer Memanjang Penuh 100% Lebar Layar */
-.site-footer {
+/* --- RESET LAYOUT DESKTOP RAPI --- */
+
+/* 1. Kembalikan semua section utama agar bertumpuk normal ke bawah */
+body, main {
+    display: block !important;
+}
+
+section, .section {
     width: 100% !important;
-    background-color: #111827 !important;
-    color: #9ca3af !important;
-    padding: 35px 20px !important;
-    text-align: center !important;
-    margin-top: 60px !important;
+    max-width: 1100px !important;
+    margin: 0 auto 40px auto !important;
     box-sizing: border-box !important;
     clear: both !important;
 }
 
-.site-footer p {
-    color: #d1d5db !important;
-    margin-bottom: 10px;
+/* 2. Grid khusus untuk bagian Layanan & Fitur saja (bukan seluruh web) */
+.services-grid, .features-grid, .testimonial-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 20px !important;
 }
 
-.site-footer a {
+/* 3. Footer Wajib Memanjang Full 100% di Paling Bawah */
+footer, .site-footer {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background-color: #111827 !important;
+    color: #9ca3af !important;
+    padding: 40px 20px !important;
+    text-align: center !important;
+    margin-top: 60px !important;
+    box-sizing: border-box !important;
+    clear: both !important;
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+footer p {
+    color: #d1d5db !important;
+    margin-bottom: 10px !important;
+}
+
+footer a {
     color: #60a5fa !important;
-    text-decoration: none;
-    margin: 0 10px;
+    text-decoration: none !important;
+    margin: 0 10px !important;
 }
