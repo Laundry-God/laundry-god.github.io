@@ -771,3 +771,48 @@ footer a {
         transform: translateY(-4px) !important;
     }
 }
+
+/* --- STYLING ACCORDION FAQ --- */
+.faq-item {
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.faq-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.faq-header h4 {
+    margin: 0 !important;
+    flex-grow: 1;
+}
+
+.faq-icon {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2563eb;
+    transition: transform 0.3s ease;
+    line-height: 1;
+}
+
+/* Jawaban sembunyi secara default */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), padding 0.3s ease;
+    padding: 0;
+}
+
+/* Kondisi saat FAQ aktif/diklik */
+.faq-item.active .faq-answer {
+    max-height: 300px;
+    padding-top: 10px;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg); /* Mengubah ikon '+' jadi 'x' */
+}
