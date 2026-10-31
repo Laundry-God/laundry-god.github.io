@@ -223,25 +223,76 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Trigger Pop-Up Notifikasi Pas Klik "Pesan Hasil Estimasi via WA"
-  const btnPesanWA = document.querySelector('.estimasi-section button, #btnPesanWA, [class*="btn-pesan"]'); 
-  // Adjust selector di atas sesuai class/id tombol WA lu di HTML
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const userDropdown = document.getElementById('userDropdown');
+  const inputNamaUser = document.getElementById('inputNamaUser');
+  const btnSimpanNama = document.getElementById('btnSimpanNama');
+
+  // 1. Auto-load Nama dari LocalStorage pas halaman dibuka
+  if (localStorage.getItem('user_laundry_name') && inputNamaUser) {
+    inputNamaUser.value = localStorage.getItem('user_laundry_name');
+  }
+
+  // 2. Toggle Buka-Tutup Menu Garis Tiga
+  if (hamburgerBtn && userDropdown) {
+    hamburgerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      userDropdown.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!userDropdown.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+        userDropdown.classList.remove('active');
+      }
+    });
+  }
+
+  // 3. Simpan Nama ke LocalStorage & Tutup Dropdown
+  if (btnSimpanNama) {
+    btnSimpanNama.addEventListener('click', () => {
+      const nama = inputNamaUser.value.trim();
+      if (nama) {
+        localStorage.setItem('user_laundry_name', nama);
+        alert(`Nama '${nama}' berhasil disimpan!`);
+        userDropdown.classList.remove('active');
+      } else {
+        alert('Isi nama kamu dulu, bro!');
+      }
+    });
+  }
+
+  // 4. EMBAT langsung tombol 'Pesan Hasil Estimasi via WA'
+  // Mencari tombol hijau WA di kalkulator
+  const btnPesanWA = document.querySelector('.estimasi-section button, a[href*="wa.me"], button[onclick*="wa"]');
 
   if (btnPesanWA) {
     btnPesanWA.addEventListener('click', () => {
-      const savedName = localStorage.getItem('user_laundry_name') || 'Kamu';
+      // Ambil nama yang disimpan (default 'Yoga' kalau belum diset)
+      const namaUser = localStorage.getItem('user_laundry_name') || 'Yoga';
+      
       const selectLayanan = document.querySelector('select');
       const inputBerat = document.querySelector('input[type="number"]');
 
-      const namaLayanan = selectLayanan ? selectLayanan.options[selectLayanan.selectedIndex].text.split('-')[0].trim() : 'Laundry';
-      const berat = inputBerat ? inputBerat.value : '1';
+      const layananText = selectLayanan ? selectLayanan.options[selectLayanan.selectedIndex].text.split('-')[0].trim() : 'Laundry';
+      const beratText = inputBerat ? inputBerat.value + 'kg' : '3kg';
 
-      // Panggil fungsi Notifikasi Live Toast lu dengan nama user
-      if (typeof showToastNotification === 'function') {
-        showToastNotification(savedName, `Baru saja memesan ${namaLayanan} ${berat}kg`);
-      } else if (typeof showToast === 'function') {
-        showToast(`${savedName} baru saja memesan ${namaLayanan} ${berat}kg`);
+      // Paksa ubah isi elemen Toast Notifikasi yang di bawah
+      const toastElement = document.querySelector('.notification-toast, [class*="toast"]');
+      if (toastElement) {
+        toastElement.innerHTML = `
+          <div style="display:flex; align-items:center; gap:10px;">
+            <span style="color:#22c55e; font-size:1.2rem;">🟢</span>
+            <div style="text-align:left;">
+              <strong style="color:#0f172a; font-size:0.9rem;">${namaUser}</strong><br>
+              <small style="color:#64748b; font-size:0.75rem;">Baru saja memesan ${layananText} ${beratText}</small>
+            </div>
+          </div>
+        `;
+        toastElement.style.display = 'block';
+        toastElement.classList.add('show');
       }
     });
   }
 });
+    
