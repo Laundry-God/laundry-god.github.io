@@ -172,66 +172,88 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
     // ==========================================
-    // ALUR BARU: KLIK WA -> SCROLL & TAMPILKAN TOAST + TOMBOL KONFIRMASI
-    // ==========================================
+// 8. ALUR FINAL: KLIK WA -> MUNCUL TOMBOL KONFIRMASI & TOAST NAMA USER -> KE WA
+// ==========================================
+document.addEventListener("DOMContentLoaded", function() {
     const waEstimasiBtn = document.getElementById("wa-link");
-    if (waEstimasiBtn) {
-        waEstimasiBtn.addEventListener('click', function(e) {
-            // 1. TAHAN BIAR NGGAK LANGSUNG PINDAH KE WA!
-            e.preventDefault();
+    
+    // Bikin elemen tombol konfirmasi secara otomatis lewat JS biar gak usah edit HTML
+    let btnKonfirmasiInline = document.getElementById("btnKonfirmasiInline");
+    if (!btnKonfirmasiInline && waEstimasiBtn) {
+        btnKonfirmasiInline = document.createElement("button");
+        btnKonfirmasiInline.id = "btnKonfirmasiInline";
+        btnKonfirmasiInline.innerText = "✅ KONFIRMASI KE WA";
+        btnKonfirmasiInline.style.cssText = `
+            display: none;
+            width: 100%;
+            margin-top: 10px;
+            background-color: #16a34a;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+        `;
+        // Selipkan tepat di bawah tombol WA utama
+        waEstimasiBtn.parentNode.insertBefore(btnKonfirmasiInline, waEstimasiBtn.nextSibling);
+    }
 
-            const savedName = localStorage.getItem('user_laundry_name') || 'Yoga';
+    if (waEstimasiBtn && btnKonfirmasiInline) {
+        // LANGKAH 1: User pencet tombol 'pesan hasil estimasi via WA'
+        waEstimasiBtn.addEventListener('click', function(e) {
+            e.preventDefault(); // Tahan biar gak langsung ke WA
+
+            const savedName = localStorage.getItem('user_laundry_name') || 'Yusnan';
             const selectLayanan = document.getElementById("layanan");
             const inputBerat = document.getElementById("berat");
 
             const namaLayanan = selectLayanan ? selectLayanan.options[selectLayanan.selectedIndex].text.split('-')[0].trim() : "Layanan";
             const berat = inputBerat ? inputBerat.value : "1";
-            const totalElem = document.getElementById("total-harga");
-            const totalFormatted = totalElem ? totalElem.innerText : "";
 
+            // LANGKAH 2: Tombol KONFIRMASI muncul
+            btnKonfirmasiInline.style.display = "block";
+            btnKonfirmasiInline.innerText = `✅ KONFIRMASI KE WA (${savedName})`;
+            btnKonfirmasiInline.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            // LANGKAH 3: Pop-up "user baru saja memesan..." muncul di bawah
             const toast = document.getElementById("toast");
             const namaEl = document.getElementById("toast-nama");
             const pesananEl = document.getElementById("toast-pesanan");
 
             if (toast && namaEl && pesananEl) {
-                // 2. SET ISI TOAST DENGAN NAMA USER & TAMBAHKAN TOMBOL KONFIRMASI
                 namaEl.innerText = savedName;
-                pesananEl.innerHTML = `
-                    Baru saja memesan ${namaLayanan} ${berat}kg<br>
-                    <button id="btn-konfirmasi-wa" style="
-                        margin-top: 8px;
-                        background-color: #22c55e;
-                        color: #ffffff;
-                        border: none;
-                        padding: 6px 14px;
-                        border-radius: 6px;
-                        font-weight: bold;
-                        font-size: 0.8rem;
-                        cursor: pointer;
-                        width: 100%;
-                    ">✅ KONFIRMASI KE WA</button>
-                `;
-
-                // 3. ANIMASI SMOOTH SCROLL KE BAWAH KE ARAH TOAST
-                toast.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                pesananEl.innerText = `Baru saja memesan ${namaLayanan} ${berat}kg`;
                 toast.classList.add("show");
 
-                // 4. PAS TOMBOL 'KONFIRMASI' DIPENCET -> BARU GAS KE WA!
+                // Biarkan pop-up nangkring selama 6 detik
                 setTimeout(() => {
-                    const btnKonfirmasi = document.getElementById("btn-konfirmasi-wa");
-                    if (btnKonfirmasi) {
-                        btnKonfirmasi.addEventListener('click', function() {
-                            const nomorWA = "6283187521130";
-                            const pesanWA = `Halo Laundry God, saya ${savedName} mau pesan:\n- Layanan: ${namaLayanan}\n- Berat: ${berat} kg\n- ${totalFormatted}`;
-                            
-                            // Buka WA
-                            window.open(`https://wa.me/${nomorWA}?text=${encodeURIComponent(pesanWA)}`, '_blank');
-                            
-                            // Sembunyikan toast
-                            toast.classList.remove("show");
-                        });
-                    }
-                }, 100);
+                    toast.classList.remove("show");
+                }, 6000);
             }
         });
+
+        // LANGKAH 4: Pas user pencet tombol KONFIRMASI -> Baru beneran menuju ke WA
+        btnKonfirmasiInline.addEventListener('click', function() {
+            const selectLayanan = document.getElementById("layanan");
+            const inputBerat = document.getElementById("berat");
+
+            const namaLayanan = selectLayanan ? selectLayanan.options[selectLayanan.selectedIndex].text : "Layanan";
+            const berat = inputBerat ? inputBerat.value : "1";
+            const totalElem = document.getElementById("total-harga");
+            const totalFormatted = totalElem ? totalElem.innerText : "Rp 0";
+            const savedName = localStorage.getItem('user_laundry_name') || 'Yusnan';
+
+            const nomorWA = "6283187521130";
+            const pesan = `Halo Laundry God, saya ${savedName} mau pesan:\n- Layanan: ${namaLayanan}\n- Berat: ${berat} kg\n- ${totalFormatted}`;
+            
+            // Gas buka WhatsApp
+            window.open(`https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`, '_blank');
+            
+            // Sembunyikan lagi tombol konfirmasinya
+            btnKonfirmasiInline.style.display = "none";
+        });
     }
+});
