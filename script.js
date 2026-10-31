@@ -158,6 +158,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
 });
 
+
 // --- 7. LOGIKA ACCORDION FAQ (BUKA TUTUP) ---
 function initAccordionFAQ() {
     const faqItems = document.querySelectorAll('.faq-item');
