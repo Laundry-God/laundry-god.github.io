@@ -1075,62 +1075,60 @@ div.section-title-wrap p {
     text-align: center !important;
 }
 
-/* --- DARK MODE SPESIFIK & RAPI --- */
+/* --- DARK MODE CLEAN FIX --- */
 body.dark-mode {
     background-color: #121212 !important;
-    color: #ffffff !important;
+    color: #f8f9fa !important;
 }
 
-/* 1. KARTU FAQ, LAYANAN, & KALKULATOR DI DARK MODE */
+/* Hanya ubah kartu-kartu utama, BUKAN semua div */
 body.dark-mode .card,
 body.dark-mode .calculator-card,
 body.dark-mode .faq-item,
-body.dark-mode .faq-answer {
+body.dark-mode .testimonial-card,
+body.dark-mode .feature-card,
+body.dark-mode [style*="background-color: white"],
+body.dark-mode [style*="background: white"],
+body.dark-mode [style*="background: #fff"],
+body.dark-mode [style*="background-color: #fff"] {
     background-color: #1e1e1e !important;
+    background: #1e1e1e !important;
     color: #ffffff !important;
     border-color: #333333 !important;
 }
 
-/* Teks Jawaban FAQ & Paragraf Biar Terang & Jelas */
-body.dark-mode .faq-answer,
-body.dark-mode .faq-answer p,
-body.dark-mode p,
-body.dark-mode span,
-body.dark-mode label {
-    color: #d0d0d0 !important;
-}
-
-body.dark-mode h1, 
-body.dark-mode h2, 
-body.dark-mode h3, 
-body.dark-mode h4 {
+/* Bikin semua teks judul & tulisan tebal jadi putih terang */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode strong,
+body.dark-mode .faq-question {
     color: #ffffff !important;
 }
 
-/* 2. KECUALIKAN HERO SECTION / BANNER ATAS (BIAR GAK ADA KOTAK HITAM) */
-body.dark-mode .hero,
-body.dark-mode .hero-content,
-body.dark-mode header {
-    background-color: transparent !important;
+/* Bikin teks isi/jawaban FAQ/penjelasan jadi abu-abu terang (mudah dibaca) */
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode label,
+body.dark-mode .faq-answer,
+body.dark-mode .faq-answer p {
+    color: #b0b0b0 !important;
 }
 
-/* 3. KECUALIKAN TOAST NOTIFIKASI (TETAP PUTIH & CLEAN) */
-body.dark-mode .toast-notification {
-    background-color: #ffffff !important;
-    color: #333333 !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-}
-body.dark-mode .toast-notification strong {
-    color: #111111 !important;
-}
-body.dark-mode .toast-notification span {
-    color: #555555 !important;
-}
-
-/* 4. INPUT & SELECT DI DARK MODE */
-body.dark-mode input, 
+/* Form Input & Select */
+body.dark-mode input,
 body.dark-mode select {
     background-color: #2b2b2b !important;
     color: #ffffff !important;
-    border-color: #444444 !important;
+    border: 1px solid #444444 !important;
+}
+
+/* Kunci Toast Notifikasi Biar Tetap Putih Kontras */
+body.dark-mode .toast-notification {
+    background-color: #ffffff !important;
+    color: #222222 !important;
+}
+body.dark-mode .toast-notification * {
+    color: #222222 !important;
 }
