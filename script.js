@@ -1,41 +1,17 @@
 function hitungEstimasi() {
-    // Mengambil nilai dari input HTML
-    const layanan = document.getElementById("layanan") ? document.getElementById("layanan").value : "";
-    const beratInput = document.getElementById("berat");
-    const berat = beratInput ? (parseFloat(beratInput.value) || 0) : 0;
+    // Ambil harga dari dropdown
+    const harga = parseFloat(document.getElementById("layanan").value) || 0;
     
-    let hargaPerKg = 0;
+    // Ambil berat dari input box
+    const berat = parseFloat(document.getElementById("berat").value) || 0;
 
-    // Logika penentuan harga berdasarkan pilihan layanan
-    if (layanan === "kiloan") {
-        hargaPerKg = 6000;
-    } else if (layanan === "express") {
-        hargaPerKg = 9000;
-    } else if (layanan === "setrika") {
-        hargaPerKg = 5000;
-    } else if (layanan === "bedcover" || layanan.includes("Bed Cover")) {
-        hargaPerKg = 15000;
-    } else {
-        // Jika value di option berupa angka harga langsung
-        hargaPerKg = parseFloat(layanan) || 6000;
-    }
+    // Hitung Total
+    const total = harga * berat;
 
-    const total = hargaPerKg * berat;
-    
-    // Format rupiah
-    const totalFormatted = "Rp " + total.toLocaleString("id-ID");
-
-    // Cari ID 'total' ATAU 'total-harga' biar dua-duanya aman
-    const elemTotal = document.getElementById("total") || document.getElementById("total-harga");
-    if (elemTotal) {
-        elemTotal.innerText = totalFormatted;
-    }
-
-    // Update Link WA
-    const waBtn = document.getElementById("wa-link");
-    if (waBtn) {
-        const pesan = `Halo Laundry God, saya mau pesan ${layanan} (${berat} kg). Total estimasi: ${totalFormatted}`;
-        waBtn.href = `https://wa.me/6283187521130?text=${encodeURIComponent(pesan)}`;
+    // Tampilkan ke teks HTML id="total-harga"
+    const totalElem = document.getElementById("total-harga");
+    if (totalElem) {
+        totalElem.innerText = "Total Estimasi: Rp " + total.toLocaleString("id-ID");
     }
 }
 
