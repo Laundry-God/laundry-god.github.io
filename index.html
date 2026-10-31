@@ -141,27 +141,6 @@
     </div>
 </section>
 
-<script>
-function calculateTotal() {
-    const pricePerKg = parseInt(document.getElementById('service-select').value);
-    const weight = parseFloat(document.getElementById('weight-input').value) || 0;
-    const serviceName = document.getElementById('service-select').options[document.getElementById('service-select').selectedIndex].text.split(' - ')[0];
-    
-    const total = pricePerKg * weight;
-    
-    // Format Rupiah
-    document.getElementById('total-price').innerText = 'Rp ' + total.toLocaleString('id-ID');
-    
-    // Update link WA otomatis
-    const waNumber = '6283187521130'; // Ganti nomor WA lu
-    const text = encodeURIComponent(`Halo Laundry God, saya mau pesan:\n- Layanan: ${serviceName}\n- Perkiraan Berat: ${weight} kg\n- Estimasi Total: Rp ${total.toLocaleString('id-ID')}`);
-    document.getElementById('calc-wa-btn').href = `https://wa.me/${waNumber}?text=${text}`;
-}
-
-// Jalankan saat pertama kali ke-load
-calculateTotal();
-</script>
-
       <!-- Seksi FAQ Accordion -->
 <section class="faq-section">
     <h2>Pertanyaan Sering Diajukan (FAQ)</h2>
@@ -318,42 +297,8 @@ calculateTotal();
     </div>
 </div>
 
-      <script>
-    // Data dummy pesanan masuk
-    const dataPesanan = [
-        { nama: "Budi (Coblong)", pesanan: "Baru saja memesan Cuci Kiloan 4kg" },
-        { nama: "Siti (Dago)", pesanan: "Baru saja memesan Bed Cover Super" },
-        { nama: "Rian (Sukajadi)", pesanan: "Baru saja memesan Cuci + Setrika 6kg" },
-        { nama: "Dewi (Lengkong)", pesanan: "Baru saja memesan Cuci Sepatu Sneaker" }
-    ];
-
-    function tampilkanToast() {
-        const toast = document.getElementById("toast");
-        const namaElem = document.getElementById("toast-nama");
-        const pesananElem = document.getElementById("toast-pesanan");
-
-        // Pilih data acak
-        const acak = dataPesanan[Math.floor(Math.random() * dataPesanan.length)];
-        
-        namaElem.innerText = acak.nama;
-        pesananElem.innerText = acak.pesanan;
-
-        // Munculkan toast
-        toast.classList.add("show");
-
-        // Sembunyikan setelah 4 detik
-        setTimeout(() => {
-            toast.classList.remove("show");
-        }, 4000);
-    }
-
-    // Jalankan pertama kali setelah 3 detik web dibuka
-    setTimeout(tampilkanToast, 3000);
-
-    // Ulangi setiap 10 detik
-    setInterval(tampilkanToast, 10000);
-      </script>
-      
-
+        <!-- Pemanggil JS Terpisah -->
+    <script src="script.js"></script>
+ 
 </body>
 </html>
