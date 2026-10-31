@@ -1,520 +1,84 @@
-/* Reset & Font Dasar */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Hero Section pake File Gambar Upload */
-.hero {
-    background: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.75)), 
-                url('hero-bg.jpg') no-repeat center center / cover !important;
-    color: #ffffff !important;
-    padding: 3.5rem 1.25rem 4rem !important;
-    text-align: center !important;
-    position: relative !important;
-}
-
-.hero h1 {
-    font-size: 1.8rem !important;
-    font-weight: 800 !important;
-    color: #ffffff !important;
-    margin-bottom: 0.75rem !important;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
-}
-
-.hero p {
-    font-size: 0.92rem !important;
-    color: #f1f5f9 !important;
-    line-height: 1.6 !important;
-    max-width: 500px !important;
-    margin: 0 auto !important;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
-}
-
-/* Pricing Grid & Cards */
-.pricing-section {
-    max-width: 1100px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-
-.pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-}
-
-.card {
-    background: white;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-/* Tombol WA / CTA */
-.btn-wa {
-    display: inline-block;
-    background-color: #25d366;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    margin-top: 1rem;
-    width: 100%;
-    text-align: center;
-}
-
-.btn-wa:hover {
-    background-color: #128c7e;
-}
-
-/* Buat ngerapihin link di dalam kartu */
-.price-card {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
-/* Styling Teks & Harga Dalam Kartu */
-.price-card h3 {
-    color: #0f172a;
-    font-size: 1.25rem;
-    margin: 0.5rem 0;
-}
-
-.price {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #2563eb;
-    margin-bottom: 0.5rem;
-}
-
-.price span {
-    font-size: 0.9rem;
-    color: #64748b;
-    font-weight: 400;
-}
-
-.desc {
-    color: #475569;
-    font-size: 0.95rem;
-    margin-bottom: 0.4rem;
-}
-
-.extra {
-    font-size: 0.85rem;
-    color: #64748b;
-    background: #f1f5f9;
-    padding: 4px 8px;
-    border-radius: 6px;
-    display: inline-block;
-    margin-bottom: 0.8rem;
-}
-
-.tap-hint {
-    display: block;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #2563eb;
-    margin-top: 0.5rem;
-}
-
-/* Styling Tombol WhatsApp & Floating Bar */
-.hero .btn-wa {
-    background-color: #25d366;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 50px;
-    font-weight: 700;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-    transition: all 0.3s ease;
-}
-
-.hero .btn-wa:hover {
-    background-color: #128c7e;
-    transform: translateY(-2px);
-}
-
-/* Footer Rapi */
-footer {
-    text-align: center;
-    padding: 2rem 1rem;
-    background-color: #0f172a;
-    color: #94a3b8;
-    font-size: 0.9rem;
-    margin-top: 3rem;
-}
-
-footer strong {
-    color: white;
-}
-
-/* Floating WhatsApp Button */
-.floating-wa-container {
-    position: fixed;
-    bottom: 50px;
-    right: 16px;
-    z-index: 999;
-}
-
-.floating-wa {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background-color: #25d366;
-    color: #ffffff;
-    padding: 10px 18px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.95rem;
-    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
-    transition: all 0.3s ease;
-}
-
-/* Styling Tombol WA Bulat & Floating Smooth */
-.btn-wa-floating {
-    position: fixed;
-    bottom: 50px;
-    right: 18px;
-    width: 56px;
-    height: 56px;
-    background-color: #25d366 !important;
-    border-radius: 50% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
-    z-index: 99999 !important;
-    touch-action: none;
-    will-change: transform, left, top; /* Optimasi hardware GPU HP */
-}
-
-.btn-wa-floating img {
-    display: block;
-    pointer-events: none;
-}
-
-
-}
-
-/* Fixed Bottom Bar */
-.bottom-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #0f172a;
-    color: #ffffff;
-    text-align: center;
-    padding: 8px 0;
-    font-size: 0.8rem;
-    font-weight: 600;
-    z-index: 99998;
-}
-
-/* Seksi Keunggulan */
-.features-section {
-    padding: 3rem 1rem;
-    background-color: #ffffff;
-    text-align: center;
-}
-
-.features-section h2 {
-    font-size: 1.5rem;
-    color: #0f172a;
-    margin-bottom: 2rem;
-    font-weight: 700;
-}
-
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.25rem;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.feature-card {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 1.5rem;
-    text-align: left;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-}
-
-.feature-icon {
-    font-size: 2rem;
-    margin-bottom: 0.75rem;
-}
-
-.feature-card h3 {
-    font-size: 1.1rem;
-    color: #0f172a;
-    margin-bottom: 0.5rem;
-}
-
-.feature-card p {
-    font-size: 0.9rem;
-    color: #64748b;
-    line-height: 1.5;
-}
-
-/* Seksi Keunggulan Fix Style */
-.features-section {
-    padding: 2.5rem 1rem;
-    background-color: #f8fafc;
-    text-align: center;
-}
-
-.features-section h2 {
-    font-size: 1.4rem;
-    color: #0f172a;
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-}
-
-.features-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.feature-card {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    padding: 1.25rem;
-    text-align: left;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-
-.feature-icon {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-    display: block;
-}
-
-.feature-card h3 {
-    font-size: 1.05rem;
-    color: #0f172a;
-    margin-bottom: 0.4rem;
-    font-weight: 700;
-}
-
-.feature-card p {
-    font-size: 0.85rem;
-    color: #64748b;
-    line-height: 1.5;
-    margin: 0;
-}
-
-/* Seksi Kalkulator Harga */
-.calculator-section {
-    padding: 2.5rem 1rem;
-    background-color: #ffffff;
-    text-align: center;
-}
-
-.calculator-section h2 {
-    font-size: 1.4rem;
-    color: #0f172a;
-    margin-bottom: 0.25rem;
-    font-weight: 700;
-}
-
-.calc-subtitle {
-    font-size: 0.85rem;
-    color: #64748b;
-    margin-bottom: 1.5rem;
-}
-
-.calc-card {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;
-    padding: 1.5rem;
-    max-width: 500px;
-    margin: 0 auto;
-    text-align: left;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-}
-
-.calc-group {
-    margin-bottom: 1.25rem;
-}
-
-.calc-group label {
-    display: block;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #334155;
-    margin-bottom: 0.5rem;
-}
-
-.calc-group select,
-.calc-group input {
-    width: 100%;
-    padding: 10px 14px;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    color: #0f172a;
-    background-color: #ffffff;
-    box-sizing: border-box;
-    outline: none;
-}
-
-.calc-group select:focus,
-.calc-group input:focus {
-    border-color: #2563eb;
-}
-
-.calc-result {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #e0f2fe;
-    padding: 1rem;
-    border-radius: 10px;
-    margin-bottom: 1.25rem;
-}
-
-.calc-result span {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #0369a1;
-}
-
-.calc-result h3 {
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: #0284c7;
-    margin: 0;
-}
-
-.btn-calc-order {
-    display: block;
-    width: 100%;
-    text-align: center;
-    background-color: #2563eb;
-    color: #ffffff;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    text-decoration: none;
-    box-sizing: border-box;
-    transition: background-color 0.2s ease;
-}
-
-.btn-calc-order:hover {
-    background-color: #1d4ed8;
-}
-
-/* Seksi FAQ Fix Style */
-.faq-section {
-    padding: 2.5rem 1rem;
-    background-color: #f8fafc;
-    text-align: center;
-}
-
-.faq-section h2 {
-    font-size: 1.4rem;
-    color: #0f172a;
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-}
-
-.faq-container {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-details.faq-item {
-    background: #ffffff !important;
-    border: 1px solid #e2e8f0 !important;
-    border-radius: 12px !important;
-    padding: 1rem 1.25rem !important;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.03) !important;
-    box-sizing: border-box;
-}
-
-details.faq-item summary {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #0f172a;
-    cursor: pointer;
-    outline: none;
-    list-style: none !important;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-details.faq-item summary::-webkit-details-marker,
-details.faq-item summary::marker {
-    display: none !important;
-}
-
-details.faq-item summary::after {
-    content: '+' !important;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #2563eb;
-    margin-left: 10px;
-}
-
-details.faq-item[open] summary::after {
-    content: '−' !important;
-}
-
-details.faq-item p {
-    font-size: 0.85rem;
-    color: #64748b;
-    line-height: 1.5;
-    margin-top: 0.75rem;
-    margin-bottom: 0;
-    border-top: 1px dashed #e2e8f0;
-    padding-top: 0.75rem;
-}
-
-/* Seksi Testimoni Fix Total */
-.testimonial-section {
-    padding: 2.5rem 1rem !important;
-    background-color: #ffffff !important;
-    text-align: center !important;
-}
-
-.testimonial-section h2 {
-    font-size: 1.4rem !important;
-    color: #0f172a !important;
-    margin-bottom: 1.5rem !important;
+/* RESET GLOBAL */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f8fafc; color: #334155; line-height: 1.6; overflow-x: hidden; }
+
+/* CONTAINER & LAYOUT UTAMA */
+.container { max-width: 1150px; margin: 0 auto; padding: 40px 20px; }
+
+/* NAVBAR */
+.navbar { display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 15px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
+.badge-status { background: #dcfce7; color: #166534; padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+
+/* HERO BANNER */
+.hero { background: linear-gradient(135deg, #1e3a8a, #2563eb); color: #ffffff; text-align: center; padding: 60px 20px; }
+.hero h1 { font-size: 28px; margin-bottom: 12px; }
+.hero p { font-size: 15px; max-width: 650px; margin: 0 auto 10px auto; opacity: 0.9; }
+.hero-sub { font-size: 13px; opacity: 0.75; }
+
+/* JUDUL SECTION */
+.section-title { text-align: center; margin-bottom: 30px; }
+.badge { background: #e0f2fe; color: #0369a1; font-size: 11px; font-weight: bold; padding: 5px 12px; border-radius: 12px; display: inline-block; margin-bottom: 10px; }
+
+/* --- GRID SYSTEM MOBILE FIRST --- */
+/* Di HP (Default), semua berjejer ke bawah otomatis */
+.services-grid, .features-calc-grid, .testimonial-grid { display: flex; flex-direction: column; gap: 20px; width: 100%; }
+
+/* --- KARTU LAYANAN & TESTIMONI --- */
+.card { background: #ffffff; padding: 25px; border-radius: 14px; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; position: relative; cursor: pointer; }
+.card:hover, .card:active { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(37,99,235,0.12); border-color: #2563eb; }
+.price { font-size: 22px; font-weight: bold; color: #2563eb; margin: 10px 0; }
+.price span { font-size: 14px; font-weight: normal; color: #64748b; }
+.card-btn-hint { color: #2563eb; font-weight: bold; display: block; margin-top: 15px; font-size: 13px; }
+
+/* --- KOLOM TENGAH (FITUR, KALKULATOR, FAQ) --- */
+.column-box { background: #ffffff; padding: 25px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+.column-box h3 { color: #0f172a; font-size: 18px; margin-bottom: 18px; }
+.feature-item, .faq-item { margin-bottom: 18px; padding-bottom: 15px; border-bottom: 1px dashed #e2e8f0; }
+.feature-item:last-child, .faq-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.feature-item h4, .faq-item h4 { color: #1e293b; font-size: 15px; margin-bottom: 5px; }
+.feature-item p, .faq-item p { color: #64748b; font-size: 13px; margin: 0; }
+
+/* --- FORM KALKULATOR --- */
+.calculator-card label { display: block; font-size: 13px; font-weight: 600; margin: 15px 0 5px 0; }
+.calculator-card select, .calculator-card input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 14px; background: #f8fafc; font-family: inherit; }
+.calculator-card h4#total-harga { background: #eff6ff; color: #1d4ed8; padding: 15px; border-radius: 8px; text-align: center; font-size: 16px; margin: 20px 0; }
+.btn-wa { display: block; width: 100%; text-align: center; background: #22c55e; color: #ffffff; padding: 14px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: background 0.2s; }
+.btn-wa:hover { background: #16a34a; }
+
+/* --- FOOTER --- */
+.site-footer { background: #0f172a; color: #94a3b8; padding: 40px 20px; text-align: center; font-size: 13px; width: 100%; display: block; }
+.site-footer p { color: #cbd5e1; margin-bottom: 8px; }
+.site-footer a { color: #60a5fa; text-decoration: none; margin: 0 10px; }
+.copyright { font-size: 12px; color: #64748b; margin-top: 20px; display: block; }
+
+/* --- FLOAT BUTTON WA --- */
+.btn-float-wa { position: fixed; bottom: 25px; right: 25px; width: 55px; height: 55px; background-color: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 9999; transition: transform 0.2s; }
+.btn-float-wa:hover { transform: scale(1.1); }
+
+/* --- TOAST NOTIFICATION --- */
+.toast-notification { position: fixed; bottom: 30px; left: 25px; background: #ffffff; padding: 12px 16px; border-radius: 10px; border-left: 4px solid #22c55e; box-shadow: 0 4px 20px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 12px; font-size: 12px; z-index: 9998; opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease, transform 0.4s ease; max-width: 280px; }
+.toast-notification.show { opacity: 1; transform: translateY(0); }
+.toast-content strong { display: block; color: #0f172a; margin-bottom: 2px; }
+.toast-content span { color: #64748b; }
+
+/* ========================================= */
+/* DESKTOP MODE (Tablet & PC) >= 768px       */
+/* ========================================= */
+@media (min-width: 768px) {
+    .services-grid, .features-calc-grid { 
+        display: grid; 
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 25px; 
+    }
+    .testimonial-grid { 
+        display: grid; 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 25px; 
+        max-width: 800px;
+        margin: 0 auto;
+    }
+}
+tom: 1.5rem !important;
     font-weight: 700 !important;
 }
 
