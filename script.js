@@ -143,7 +143,7 @@ function mulaiToastOtomatis() {
             toast.classList.remove("show");
         }, 8000);
         
-    },
+    }, 8000);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -171,7 +171,49 @@ document.addEventListener("DOMContentLoaded", function() {
     initAccordionFAQ();
 });
 
-  //_ _ 8.  EKSEKUSI: HANYA PAS KLIK TOMBOL "Pesan Hasil Estimasi via WA" TOAST NAMA MUNCUL!
+// ==========================================
+// 8. LOGIKA NAMA USER (CUMA MUNCUL PAS KLIK WA ESTIMASI)
+// ==========================================
+document.addEventListener("DOMContentLoaded", function() {
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const userDropdown = document.getElementById('userDropdown');
+    const inputNamaUser = document.getElementById('inputNamaUser');
+    const btnSimpanNama = document.getElementById('btnSimpanNama');
+
+    // Auto load nama terakhir yang diisi ke kolom input
+    if (inputNamaUser && localStorage.getItem('user_laundry_name')) {
+        inputNamaUser.value = localStorage.getItem('user_laundry_name');
+    }
+
+    // Toggle Menu Garis Tiga
+    if (hamburgerBtn && userDropdown) {
+        hamburgerBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            userDropdown.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!userDropdown.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                userDropdown.classList.remove('active');
+            }
+        });
+    }
+
+    // Simpan Nama (Hanya Simpan ke Memori & Tutup Menu)
+    if (btnSimpanNama) {
+        btnSimpanNama.addEventListener('click', function() {
+            const nama = inputNamaUser.value.trim();
+            if (nama) {
+                localStorage.setItem('user_laundry_name', nama);
+                alert(`Nama '${nama}' berhasil disimpan!`);
+                if (userDropdown) userDropdown.classList.remove('active');
+            } else {
+                alert('Isi nama kamu dulu, bro!');
+            }
+        });
+    }
+
+        // EKSEKUSI: HANYA PAS KLIK TOMBOL "Pesan Hasil Estimasi via WA" TOAST NAMA MUNCUL!
     const waEstimasiBtn = document.getElementById("wa-link");
     if (waEstimasiBtn) {
         waEstimasiBtn.addEventListener('click', function() {
