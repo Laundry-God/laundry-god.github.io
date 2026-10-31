@@ -818,33 +818,36 @@ footer a {
 }
 
 /* ==========================================
-   UBAH TEKS PILIH PAKET JADI TOMBOL SOLID
+   FORCE UBAH 'KLIK UNTUK PILIH PAKET' JADI TOMBOL
    ========================================== */
 
-/* Target link 'Klik untuk Pilih Paket' di dalam card */
+/* Targetkan elemen link / button / teks klik di dalam card */
 .card a, 
-.price-card a, 
-.card p:last-child {
-  display: block;
-  width: 100%;
-  text-align: center;
-  background-color: #2563eb; /* Warna biru utama */
-  color: #ffffff !important;   /* Teks putih */
-  font-weight: 700;
-  font-size: 0.95rem;
-  padding: 0.75rem 1rem;
-  margin-top: 1rem;
-  border-radius: 10px;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
-  transition: all 0.2s ease-in-out;
+.card button,
+.card [onclick],
+.card .btn,
+.service-card a,
+.service-card button {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  background-color: #2563eb !important; /* Warna biru */
+  color: #ffffff !important;           /* Teks putih */
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  padding: 0.75rem 1rem !important;
+  margin-top: 1rem !important;
+  border-radius: 10px !important;
+  border: none !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25) !important;
+  box-sizing: border-box !important;
 }
 
-/* Efek pas tombol ditekan / di-hover di HP */
-.card a:hover, 
-.price-card a:hover, 
-.card a:active {
-  background-color: #1d4ed8;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.35);
+/* Efek pas ditekan di HP */
+.card a:active, 
+.card button:active,
+.card [onclick]:active {
+  background-color: #1d4ed8 !important;
+  transform: scale(0.98) !important;
 }
