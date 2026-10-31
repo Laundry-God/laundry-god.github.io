@@ -78,29 +78,3 @@ function tampilkanToast() {
 // Jalankan Notifikasi Otomatis
 setTimeout(tampilkanToast, 3000);
 setInterval(tampilkanToast, 10000);
-
-// Logika Dark Mode
-document.addEventListener("DOMContentLoaded", function() {
-    const themeBtn = document.getElementById("theme-toggle");
-    const themeIcon = document.getElementById("theme-icon");
-
-    // Cek status simpanan sebelumnya
-    if (localStorage.getItem("theme") === "dark") {
-        document.body.classList.add("dark-mode");
-        if (themeIcon) themeIcon.innerText = "☀️";
-    }
-
-    if (themeBtn) {
-        themeBtn.onclick = function() {
-            document.body.classList.toggle("dark-mode");
-            
-            if (document.body.classList.contains("dark-mode")) {
-                localStorage.setItem("theme", "dark");
-                if (themeIcon) themeIcon.innerText = "☀️";
-            } else {
-                localStorage.setItem("theme", "light");
-                if (themeIcon) themeIcon.innerText = "🌙";
-            }
-        };
-    }
-});
