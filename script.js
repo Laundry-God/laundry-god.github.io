@@ -1,19 +1,38 @@
 function hitungEstimasi() {
-    // Ambil harga dari dropdown
-    const harga = parseFloat(document.getElementById("layanan").value) || 0;
+    // 1. Ambil elemen input
+    const selectLayanan = document.getElementById("layanan");
+    const inputBerat = document.getElementById("berat");
     
-    // Ambil berat dari input box
-    const berat = parseFloat(document.getElementById("berat").value) || 0;
+    // Ambil teks nama layanan yang dipilih (misal: "Cuci Kiloan")
+    const namaLayanan = selectLayanan ? selectLayanan.options[selectLayanan.selectedIndex].text : "Layanan";
+    const harga = parseFloat(selectLayanan.value) || 0;
+    const berat = parseFloat(inputBerat.value) || 0;
 
-    // Hitung Total
+    // 2. Hitung Total
     const total = harga * berat;
+    const totalFormatted = "Rp " + total.toLocaleString("id-ID");
 
-    // Tampilkan ke teks HTML id="total-harga"
+    // 3. Tampilkan Total di Web
     const totalElem = document.getElementById("total-harga");
     if (totalElem) {
-        totalElem.innerText = "Total Estimasi: Rp " + total.toLocaleString("id-ID");
+        totalElem.innerText = "Total Estimasi: " + totalFormatted;
+    }
+
+    // 4. Update Link Tombol WA Dinamis
+    const waBtn = document.getElementById("wa-link");
+    if (waBtn) {
+        // GANTI nomor 6281234567890 di bawah ini dengan nomor WA laundry lu yang asli!
+        const nomorWA = "6283187521130"; 
+        
+        const pesan = `Halo Laundry God, saya mau pesan:\n- Layanan: ${namaLayanan}\n- Berat: ${berat} kg\n- Total Estimasi: ${totalFormatted}`;
+        
+        // Pasang link WA yang valid
+        waBtn.href = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
     }
 }
+
+// Jalankan sekali saat halaman pertama kali selesai dimuat
+document.addEventListener("DOMContentLoaded", hitungEstimasi);
 
 // Pasang Event Listener otomatis biar pas ngetik angka langsung berubah
 document.addEventListener("DOMContentLoaded", function() {
