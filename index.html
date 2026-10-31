@@ -281,6 +281,19 @@ calculateTotal();
     });
 </script>
       
-    
-  </body>
-  </html>
+          <!-- Area Latihan JS -->
+    <div style="text-align: center; margin: 30px 0; padding: 20px; border: 2px dashed #007bff; border-radius: 10px;">
+        <h3 id="status-laundry">Status: Belum Dicuci 🧺</h3>
+        <button onclick="prosesCuci()" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; font-weight: bold;">
+            Mulai Cuci! 🧼
+        </button>
+    </div>
+
+    <script>
+        function prosesCuci() {
+            document.getElementById("status-laundry").innerText = "Status: Sedang Diproses & Wangi! ✨";
+        }
+    </script>
+
+</body>
+</html>
