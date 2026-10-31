@@ -1075,54 +1075,62 @@ div.section-title-wrap p {
     text-align: center !important;
 }
 
-/* --- DARK MODE OVERRIDE --- */
+/* --- DARK MODE SPESIFIK & RAPI --- */
 body.dark-mode {
     background-color: #121212 !important;
     color: #ffffff !important;
 }
 
-/* Mengubah semua latar belakang putih menjadi gelap */
-body.dark-mode div, 
-body.dark-mode section, 
-body.dark-mode .card, 
+/* 1. KARTU FAQ, LAYANAN, & KALKULATOR DI DARK MODE */
+body.dark-mode .card,
 body.dark-mode .calculator-card,
-body.dark-mode header,
-body.dark-mode footer {
+body.dark-mode .faq-item,
+body.dark-mode .faq-answer {
     background-color: #1e1e1e !important;
     color: #ffffff !important;
+    border-color: #333333 !important;
 }
 
-/* Mengubah warna teks paragraf & judul saat dark mode */
+/* Teks Jawaban FAQ & Paragraf Biar Terang & Jelas */
+body.dark-mode .faq-answer,
+body.dark-mode .faq-answer p,
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode label {
+    color: #d0d0d0 !important;
+}
+
 body.dark-mode h1, 
 body.dark-mode h2, 
 body.dark-mode h3, 
-body.dark-mode h4, 
-body.dark-mode p, 
-body.dark-mode span, 
-body.dark-mode label {
-    color: #e0e0e0 !important;
+body.dark-mode h4 {
+    color: #ffffff !important;
 }
 
-/* Input & Select di Dark Mode */
+/* 2. KECUALIKAN HERO SECTION / BANNER ATAS (BIAR GAK ADA KOTAK HITAM) */
+body.dark-mode .hero,
+body.dark-mode .hero-content,
+body.dark-mode header {
+    background-color: transparent !important;
+}
+
+/* 3. KECUALIKAN TOAST NOTIFIKASI (TETAP PUTIH & CLEAN) */
+body.dark-mode .toast-notification {
+    background-color: #ffffff !important;
+    color: #333333 !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+body.dark-mode .toast-notification strong {
+    color: #111111 !important;
+}
+body.dark-mode .toast-notification span {
+    color: #555555 !important;
+}
+
+/* 4. INPUT & SELECT DI DARK MODE */
 body.dark-mode input, 
 body.dark-mode select {
     background-color: #2b2b2b !important;
     color: #ffffff !important;
     border-color: #444444 !important;
-}
-
-/* Styling Tombol Mode biar rapi */
-.theme-btn {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    z-index: 99999;
-    background: #007bff;
-    border: none;
-    border-radius: 50%;
-    width: 38px;
-    height: 38px;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
