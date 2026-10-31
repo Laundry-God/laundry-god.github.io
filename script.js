@@ -147,4 +147,5 @@ function mulaiToastOtomatis() {
 // Pastikan dipanggil saat web diload
 document.addEventListener("DOMContentLoaded", function() {
     mulaiToastOtomatis();
+    
 });
