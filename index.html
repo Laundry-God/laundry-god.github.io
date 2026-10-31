@@ -317,6 +317,42 @@ calculateTotal();
         <span id="toast-pesanan" style="color: #666;">Baru saja memesan Cuci Kiloan 5kg</span>
     </div>
 </div>
+
+      <script>
+    // Data dummy pesanan masuk
+    const dataPesanan = [
+        { nama: "Budi (Coblong)", pesanan: "Baru saja memesan Cuci Kiloan 4kg" },
+        { nama: "Siti (Dago)", pesanan: "Baru saja memesan Bed Cover Super" },
+        { nama: "Rian (Sukajadi)", pesanan: "Baru saja memesan Cuci + Setrika 6kg" },
+        { nama: "Dewi (Lengkong)", pesanan: "Baru saja memesan Cuci Sepatu Sneaker" }
+    ];
+
+    function tampilkanToast() {
+        const toast = document.getElementById("toast");
+        const namaElem = document.getElementById("toast-nama");
+        const pesananElem = document.getElementById("toast-pesanan");
+
+        // Pilih data acak
+        const acak = dataPesanan[Math.floor(Math.random() * dataPesanan.length)];
+        
+        namaElem.innerText = acak.nama;
+        pesananElem.innerText = acak.pesanan;
+
+        // Munculkan toast
+        toast.classList.add("show");
+
+        // Sembunyikan setelah 4 detik
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 4000);
+    }
+
+    // Jalankan pertama kali setelah 3 detik web dibuka
+    setTimeout(tampilkanToast, 3000);
+
+    // Ulangi setiap 10 detik
+    setInterval(tampilkanToast, 10000);
+      </script>
       
 
 </body>
