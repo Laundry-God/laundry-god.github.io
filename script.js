@@ -1,95 +1,76 @@
-// Fungsi jika kartu paket diklik -> Otomatis pilih layanan di kalkulator & scroll ke bawah
-function pilihLayanan(nilaiHarga) {
-    const selectLayanan = document.getElementById("layanan");
-    if (selectLayanan) {
-        selectLayanan.value = nilaiHarga;
-        hitungEstimasi(); // Hitung ulang harga
-        
-        // Scroll halus ke area kalkulator
-        const calcCard = document.querySelector('.calculator-card');
-        if (calcCard) {
-            calcCard.scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-}
-
+// 1. FUNGSI HITUNG ESTIMASI DAN UPDATE LINK WA
 function hitungEstimasi() {
-    // 1. Ambil elemen input
     const selectLayanan = document.getElementById("layanan");
     const inputBerat = document.getElementById("berat");
     
-    // Ambil teks nama layanan yang dipilih (misal: "Cuci Kiloan")
     const namaLayanan = selectLayanan ? selectLayanan.options[selectLayanan.selectedIndex].text : "Layanan";
     const harga = parseFloat(selectLayanan.value) || 0;
     const berat = parseFloat(inputBerat.value) || 0;
 
-    // 2. Hitung Total
     const total = harga * berat;
     const totalFormatted = "Rp " + total.toLocaleString("id-ID");
 
-    // 3. Tampilkan Total di Web
     const totalElem = document.getElementById("total-harga");
     if (totalElem) {
         totalElem.innerText = "Total Estimasi: " + totalFormatted;
     }
 
-    // 4. Update Link Tombol WA Dinamis
     const waBtn = document.getElementById("wa-link");
     if (waBtn) {
-        // GANTI nomor 6281234567890 di bawah ini dengan nomor WA laundry lu yang asli!
-        const nomorWA = "6283187521130"; 
-        
+        const nomorWA = "6283187521130"; // WA SUDAH FIX DI SINI
         const pesan = `Halo Laundry God, saya mau pesan:\n- Layanan: ${namaLayanan}\n- Berat: ${berat} kg\n- Total Estimasi: ${totalFormatted}`;
-        
-        // Pasang link WA yang valid
-        waBtn.href = `https://wa.me/${6283187521130}?text=${encodeURIComponent(pesan)}`;
+        waBtn.href = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
     }
 }
 
-// Jalankan sekali saat halaman pertama kali selesai dimuat
-document.addEventListener("DOMContentLoaded", hitungEstimasi);
-
-// Pasang Event Listener otomatis biar pas ngetik angka langsung berubah
-document.addEventListener("DOMContentLoaded", function() {
-    const inputBerat = document.getElementById("berat");
+// 2. FUNGSI KLIK KARTU LANGSUNG PILIH HARGA
+function pilihLayanan(nilaiHarga) {
     const selectLayanan = document.getElementById("layanan");
-
-    if (inputBerat) {
-        inputBerat.addEventListener("input", hitungEstimasi);
-    }
     if (selectLayanan) {
-        selectLayanan.addEventListener("change", hitungEstimasi);
+        selectLayanan.value = nilaiHarga;
+        hitungEstimasi(); 
+        
+        // Auto scroll turun ke kalkulator
+        const areaCalc = document.getElementById("area-kalkulator");
+        if (areaCalc) {
+            areaCalc.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
     }
-});
-
-
-// --- LOGIKA NOTIFIKASI DUMMY (TOAST) ---
-const dataPesanan = [
-    { nama: "Budi (Coblong)", pesanan: "Baru saja memesan Cuci Kiloan 4kg" },
-    { nama: "Siti (Dago)", pesanan: "Baru saja memesan Bed Cover Super" },
-    { nama: "Rian (Sukajadi)", pesanan: "Baru saja memesan Cuci + Setrika 6kg" },
-    { nama: "Dewi (Lengkong)", pesanan: "Baru saja memesan Cuci Sepatu Sneaker" }
-];
-
-function tampilkanToast() {
-    const toast = document.getElementById("toast");
-    const namaElem = document.getElementById("toast-nama");
-    const pesananElem = document.getElementById("toast-pesanan");
-
-    if (!toast || !namaElem || !pesananElem) return;
-
-    const acak = dataPesanan[Math.floor(Math.random() * dataPesanan.length)];
-    
-    namaElem.innerText = acak.nama;
-    pesananElem.innerText = acak.pesanan;
-
-    toast.classList.add("show");
-
-    setTimeout(() => {
-        toast.classList.remove("show");
-    }, 4000);
 }
 
-// Jalankan Notifikasi Otomatis
-setTimeout(tampilkanToast, 3000);
-setInterval(tampilkanToast, 10000);
+// 3. FUNGSI JAM OPERASIONAL
+function cekJamOperasional() {
+    const statusElem = document.getElementById("status-buka");
+    if (!statusElem) return;
+
+    const jam = new Date().getHours();
+    if (jam >= 8 && jam < 20) {
+        statusElem.innerText = "🟢 Buka Hari Ini";
+        statusElem.style.backgroundColor = "#dcfce7";
+        statusElem.style.color = "#166534";
+    } else {
+        statusElem.innerText = "🔴 Tutup — Buka Jam 08.00";
+        statusElem.style.backgroundColor = "#fee2e2";
+        statusElem.style.color = "#991b1b";
+    }
+}
+
+// 4. FUNGSI TOAST NOTIFIKASI MUNCUL HILANG DUMMY
+function munculkanToast() {
+    const toast = document.getElementById("toast");
+    if (toast) {
+        toast.classList.add("show");
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 4000); // Hilang setelah 4 detik
+    }
+}
+
+// JALANKAN SEMUA SAAT WEB DIBUKA
+document.addEventListener("DOMContentLoaded", function() {
+    hitungEstimasi();
+    cekJamOperasional();
+    
+    // Toast muncul 3 detik setelah web dibuka pertama kali
+    setTimeout(munculkanToast, 3000);
+});
