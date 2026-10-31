@@ -1,244 +1,252 @@
-// ==========================================
-// LAUNDRY GOD - FULL INTEGRATED & DRAGGABLE WA
-// ==========================================
-
-document.addEventListener('DOMContentLoaded', () => {
-  
-  // ------------------------------------------
-  // 1. DATA CONFIG (GANTI NO WA LU DI SINI)
-  // ------------------------------------------
-  const NO_WA = '628123456789'; // <-- Ganti nomor WA lu (format 628xxx)
-
-  // ------------------------------------------
-  // 2. HAMBURGER MENU & SIMPAN NAMA USER
-  // ------------------------------------------
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const userDropdown = document.getElementById('userDropdown');
-  const inputNamaUser = document.getElementById('inputNamaUser');
-  const btnSimpanNama = document.getElementById('btnSimpanNama');
-
-  if (inputNamaUser && localStorage.getItem('user_laundry_name')) {
-    inputNamaUser.value = localStorage.getItem('user_laundry_name');
-  }
-
-  if (hamburgerBtn && userDropdown) {
-    hamburgerBtn.style.cursor = 'pointer';
-    hamburgerBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      userDropdown.classList.toggle('active');
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!userDropdown.contains(e.target) && !hamburgerBtn.contains(e.target)) {
-        userDropdown.classList.remove('active');
-      }
-    });
-  }
-
-  if (btnSimpanNama) {
-    btnSimpanNama.addEventListener('click', () => {
-      const nama = inputNamaUser.value.trim();
-      if (nama) {
-        localStorage.setItem('user_laundry_name', nama);
-        alert(`Nama '${nama}' berhasil disimpan!`);
-        if (userDropdown) userDropdown.classList.remove('active');
-      } else {
-        alert('Isi nama kamu dulu, bro!');
-      }
-    });
-  }
-
-  // ------------------------------------------
-  // 3. KALKULATOR ESTIMASI HARGA
-  // ------------------------------------------
-  const selectLayanan = document.querySelector('select');
-  const inputBerat = document.querySelector('input[type="number"]');
-  const totalDisplay = document.querySelector('.total-biaya, .total, #totalEstimasi');
-
-  function hitungTotal() {
-    if (!selectLayanan || !inputBerat) return;
-
-    let hargaPerUnit = 6000;
-    const textOption = selectLayanan.options[selectLayanan.selectedIndex]?.text || '';
-
-    if (textOption.includes('9.000') || textOption.toLowerCase().includes('setrika')) {
-      hargaPerUnit = 9000;
-    } else if (textOption.includes('15.000') || textOption.toLowerCase().includes('bed cover')) {
-      hargaPerUnit = 15000;
-    }
-
-    const berat = parseFloat(inputBerat.value) || 1;
-    const total = hargaPerUnit * berat;
-
-    if (totalDisplay) {
-      totalDisplay.innerText = `Total Estimasi: Rp ${total.toLocaleString('id-ID')}`;
-    }
-  }
-
-  if (selectLayanan) selectLayanan.addEventListener('change', hitungTotal);
-  if (inputBerat) inputBerat.addEventListener('input', hitungTotal);
-
-  // ------------------------------------------
-  // 4. AUTO SCROLL PILIH PAKET
-  // ------------------------------------------
-  const cardButtons = document.querySelectorAll('.card, .btn-pilih');
-  cardButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const card = btn.closest('.card') || btn;
-      const title = card.querySelector('h3')?.innerText.trim();
-      const sectionEstimasi = document.querySelector('.estimasi-section, #Hitung-Estimasi') || selectLayanan;
-
-      if (title && selectLayanan) {
-        for (let option of selectLayanan.options) {
-          if (option.text.toLowerCase().includes(title.toLowerCase())) {
-            selectLayanan.value = option.value;
-            break;
-          }
-        }
-        hitungTotal();
-      }
-
-      if (sectionEstimasi) {
-        sectionEstimasi.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    });
-  });
-
-  // ------------------------------------------
-  // 5. TOMBOL ESTIMASI VIA WA (TOAST + REDIRECT)
-  // ------------------------------------------
-  const btnPesanWA = document.querySelector('.estimasi-section button, .estimasi-section a, #btnPesanWA, [class*="btn-pesan"]');
-
-  if (btnPesanWA) {
-    btnPesanWA.addEventListener('click', (e) => {
-      e.preventDefault();
-
-      const namaUser = localStorage.getItem('user_laundry_name') || 'Yoga';
-      const txtLayanan = selectLayanan ? selectLayanan.options[selectLayanan.selectedIndex].text.split('-')[0].trim() : 'Laundry';
-      const txtBerat = inputBerat ? inputBerat.value : '3';
-      const txtTotal = totalDisplay ? totalDisplay.innerText : '';
-
-      // Tampilkan Toast Pop-up
-      tampilkanToast(namaUser, `Baru saja memesan ${txtLayanan} (${txtBerat}kg/pcs)`);
-
-      // Buat Format Pesan WhatsApp
-      const textWA = `Halo Laundry God, saya ${namaUser} mau order:\n\n- Layanan: ${txtLayanan}\n- Berat/Jumlah: ${txtBerat} (kg/pcs)\n- ${txtTotal}\n\nMohon diproses ya!`;
-      const urlWA = `https://wa.me/${NO_WA}?text=${encodeURIComponent(textWA)}`;
-
-      // Buka WA setelah jeda 0.5 detik biar toast keburu keliatan
-      setTimeout(() => {
-        window.open(urlWA, '_blank');
-      }, 500);
-    });
-  }
-
-  // ------------------------------------------
-  // 6. FUNGSI TAMPILKAN TOAST NOTIFIKASI
-  // ------------------------------------------
-  function tampilkanToast(nama, info) {
-    let toast = document.querySelector('.notification-toast, [class*="toast"]');
+// 1. FUNGSI HITUNG ESTIMASI DAN UPDATE LINK WA
+function hitungEstimasi() {
+    const selectLayanan = document.getElementById("layanan");
+    const inputBerat = document.getElementById("berat");
     
-    if (!toast) {
-      toast = document.createElement('div');
-      toast.className = 'notification-toast';
-      document.body.appendChild(toast);
+    const namaLayanan = selectLayanan ? selectLayanan.options[selectLayanan.selectedIndex].text : "Layanan";
+    const harga = parseFloat(selectLayanan.value) || 0;
+    const berat = parseFloat(inputBerat.value) || 0;
+
+    const total = harga * berat;
+    const totalFormatted = "Rp " + total.toLocaleString("id-ID");
+
+    const totalElem = document.getElementById("total-harga");
+    if (totalElem) {
+        totalElem.innerText = "Total Estimasi: " + totalFormatted;
     }
 
-    toast.innerHTML = `
-      <div style="display:flex; align-items:center; gap:10px; background:#fff; padding:12px 16px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.15); border:1px solid #e2e8f0;">
-        <span style="color:#22c55e; font-size:1.2rem;">🟢</span>
-        <div style="text-align:left;">
-          <strong style="color:#0f172a; font-size:0.875rem; display:block;">${nama}</strong>
-          <small style="color:#64748b; font-size:0.75rem;">${info}</small>
-        </div>
-      </div>
-    `;
+    const waBtn = document.getElementById("wa-link");
+    if (waBtn) {
+        const nomorWA = "6283187521130"; // WA SUDAH FIX DI SINI
+        const pesan = `Halo Laundry God, saya mau pesan:\n- Layanan: ${namaLayanan}\n- Berat: ${berat} kg\n- Total Estimasi: ${totalFormatted}`;
+        waBtn.href = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
+    }
+}
 
-    toast.style.position = 'fixed';
-    toast.style.bottom = '85px';
-    toast.style.left = '15px';
-    toast.style.zIndex = '9998';
-    toast.style.display = 'block';
+// 2. FUNGSI KLIK KARTU LANGSUNG PILIH HARGA
+function pilihLayanan(nilaiHarga) {
+    const selectLayanan = document.getElementById("layanan");
+    if (selectLayanan) {
+        selectLayanan.value = nilaiHarga;
+        hitungEstimasi(); 
+        
+        // Auto scroll turun ke kalkulator
+        const areaCalc = document.getElementById("area-kalkulator");
+        if (areaCalc) {
+            areaCalc.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+}
 
-    setTimeout(() => {
-      toast.style.display = 'none';
-    }, 4000);
-  }
+// 3. FUNGSI JAM OPERASIONAL
+function cekJamOperasional() {
+    const statusElem = document.getElementById("status-buka");
+    if (!statusElem) return;
 
-  // ------------------------------------------
-  // 7. FITUR TOMBOL WA MELAYANG BISA DIGESER (DRAGGABLE)
-  // ------------------------------------------
-  const floatingWA = document.querySelector('a[href*="wa.me"]:not(.estimasi-section a), .floating-wa, [class*="whatsapp-float"]');
+    const jam = new Date().getHours();
+    if (jam >= 8 && jam < 20) {
+        statusElem.innerText = "🟢 Buka Hari Ini";
+        statusElem.style.backgroundColor = "#dcfce7";
+        statusElem.style.color = "#166534";
+    } else {
+        statusElem.innerText = "🔴 Tutup — Buka Jam 08.00";
+        statusElem.style.backgroundColor = "#fee2e2";
+        statusElem.style.color = "#991b1b";
+    }
+}
 
-  if (floatingWA) {
-    let isDragging = false;
-    let currentX, currentY, initialX, initialY;
-    let xOffset = 0, yOffset = 0;
+// 4. FUNGSI TOAST NOTIFIKASI MUNCUL HILANG DUMMY
+function munculkanToast() {
+    const toast = document.getElementById("toast");
+    if (toast) {
+        toast.classList.add("show");
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 4000); // Hilang setelah 4 detik
+    }
+}
 
-    floatingWA.style.position = 'fixed';
-    floatingWA.style.touchAction = 'none';
+// JALANKAN SEMUA SAAT WEB DIBUKA
+document.addEventListener("DOMContentLoaded", function() {
+    hitungEstimasi();
+    cekJamOperasional();
+    
+    // Toast muncul 3 detik setelah web dibuka pertama kali
+    setTimeout(munculkanToast, 3000);
+});
 
-    // Touch Event (HP)
-    floatingWA.addEventListener('touchstart', dragStart, { passive: false });
-    floatingWA.addEventListener('touchend', dragEnd, { passive: false });
-    floatingWA.addEventListener('touchmove', drag, { passive: false });
+// --- 5. BIKIN TOMBOL WA DIGESER SUPER SMOOTH (60FPS GPU ACCELERATED) ---
+const waBtn = document.getElementById("btn-float-wa");
+let isDragging = false;
+let currentX = 0, currentY = 0;
+let initialX = 0, initialY = 0;
+let xOffset = 0, yOffset = 0;
 
-    // Mouse Event (Desktop)
-    floatingWA.addEventListener('mousedown', dragStart);
-    floatingWA.addEventListener('mouseup', dragEnd);
-    floatingWA.addEventListener('mousemove', drag);
-
-    function dragStart(e) {
-      if (e.type === "touchstart") {
+if (waBtn) {
+    waBtn.addEventListener('touchstart', function(e) {
         initialX = e.touches[0].clientX - xOffset;
         initialY = e.touches[0].clientY - yOffset;
-      } else {
-        initialX = e.clientX - xOffset;
-        initialY = e.clientY - yOffset;
-      }
-      if (e.target === floatingWA || floatingWA.contains(e.target)) {
-        isDragging = true;
-      }
-    }
+        isDragging = false;
+    }, { passive: false });
 
-    function dragEnd() {
-      initialX = currentX;
-      initialY = currentY;
-      isDragging = false;
-    }
-
-    function drag(e) {
-      if (isDragging) {
-        e.preventDefault();
-        if (e.type === "touchmove") {
-          currentX = e.touches[0].clientX - initialX;
-          currentY = e.touches[0].clientY - initialY;
-        } else {
-          currentX = e.clientX - initialX;
-          currentY = e.clientY - initialY;
+    waBtn.addEventListener('touchmove', function(e) {
+        let currentTouchX = e.touches[0].clientX - initialX;
+        let currentTouchY = e.touches[0].clientY - initialY;
+        
+        // Kalau geser dikit aja, anggap lagi nge-drag
+        if (Math.abs(currentTouchX) > 5 || Math.abs(currentTouchY) > 5) {
+            isDragging = true;
+            e.preventDefault(); // Biar layar nggak ikut ke-scroll
+            
+            currentX = currentTouchX;
+            currentY = currentTouchY;
+            
+            // Pake translate3d biar dibantu GPU (hasilnya 60fps halus banget)
+            waBtn.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
         }
+    }, { passive: false });
+
+    waBtn.addEventListener('touchend', function(e) {
+        initialX = currentX;
+        initialY = currentY;
         xOffset = currentX;
         yOffset = currentY;
-        setTranslate(currentX, currentY, floatingWA);
-      }
-    }
+    });
 
-    function setTranslate(xPos, yPos, el) {
-      el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
-    }
-  }
+    waBtn.addEventListener('click', function(e) {
+        // Kalau abis digeser, jangan buka WA
+        if (isDragging) {
+            e.preventDefault();
+        }
+    });
+}
 
-  // ------------------------------------------
-  // 8. ACCORDION FAQ
-  // ------------------------------------------
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    if (question) {
-      question.addEventListener('click', () => {
-        item.classList.toggle('active');
-      });
-    }
-  });
+// --- 6. BIKIN POP-UP ORDERAN MUNCUL TERUS TIAP 8 DETIK ---
+function mulaiToastOtomatis() {
+    const toast = document.getElementById("toast");
+    const namaEl = document.getElementById("toast-nama");
+    const pesananEl = document.getElementById("toast-pesanan");
+    
+    // Data dummy biar kelihatan rame
+    const daftarNama = ["Ahmad (Bandung)", "Rizky (Sukajadi)", "Siti (Coblong)", "Budi (Dago)", "Dewi (Lengkong)"];
+    const daftarPesanan = ["Baru saja memesan Cuci Kiloan 4kg", "Baru saja memesan Cuci + Setrika 6kg", "Baru saja memesan Bed Cover Super", "Baru saja memesan Cuci Kiloan 3kg"];
+    
+    if(!toast) return;
 
+    setInterval(() => {
+        // Acak nama dan pesanan HANYA jika tidak ada nama tersimpan dari user
+        const savedName = localStorage.getItem('user_laundry_name');
+        
+        const randomNama = savedName ? savedName : daftarNama[Math.floor(Math.random() * daftarNama.length)];
+        const randomPesanan = daftarPesanan[Math.floor(Math.random() * daftarPesanan.length)];
+        
+        if (namaEl) namaEl.innerText = randomNama;
+        if (pesananEl) pesananEl.innerText = randomPesanan;
+        
+        // Munculkan pop-up
+        toast.classList.add("show");
+        
+        // Sembunyikan lagi setelah 4 detik
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 4000);
+        
+    }, 8000); // Looping terjadi setiap 8 detik
+}
+
+// Pastikan dipanggil saat web diload
+document.addEventListener("DOMContentLoaded", function() {
+    mulaiToastOtomatis();
 });
+
+// --- 7. LOGIKA ACCORDION FAQ (BUKA TUTUP) ---
+function initAccordionFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        item.addEventListener('click', function() {
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+
+            this.classList.toggle('active');
+        });
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    initAccordionFAQ();
+});
+
+// ==========================================
+// 8. FITUR TAMBAHAN: LOGIKA GARIS TIGA & SIMPAN NAMA
+// ==========================================
+document.addEventListener("DOMContentLoaded", function() {
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const userDropdown = document.getElementById('userDropdown');
+    const inputNamaUser = document.getElementById('inputNamaUser');
+    const btnSimpanNama = document.getElementById('btnSimpanNama');
+
+    // Auto load nama dari localStorage
+    if (inputNamaUser && localStorage.getItem('user_laundry_name')) {
+        inputNamaUser.value = localStorage.getItem('user_laundry_name');
+    }
+
+    // Toggle Menu Garis Tiga
+    if (hamburgerBtn && userDropdown) {
+        hamburgerBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            userDropdown.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!userDropdown.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                userDropdown.classList.remove('active');
+            }
+        });
+    }
+
+    // Simpan nama saat tombol diklik
+    if (btnSimpanNama) {
+        btnSimpanNama.addEventListener('click', function() {
+            const nama = inputNamaUser.value.trim();
+            if (nama) {
+                localStorage.setItem('user_laundry_name', nama);
+                alert(`Nama '${nama}' berhasil disimpan!`);
+                if (userDropdown) userDropdown.classList.remove('active');
+            } else {
+                alert('Isi nama kamu dulu, bro!');
+            }
+        });
+    }
+
+    // Pas tombol "Pesan Hasil Estimasi via WA" diklik -> Munculkan Toast Nama User
+    const waEstimasiBtn = document.getElementById("wa-link");
+    if (waEstimasiBtn) {
+        waEstimasiBtn.addEventListener('click', function() {
+            const savedName = localStorage.getItem('user_laundry_name') || 'Yoga';
+            const selectLayanan = document.getElementById("layanan");
+            const inputBerat = document.getElementById("berat");
+
+            const namaLayanan = selectLayanan ? selectLayanan.options[selectLayanan.selectedIndex].text.split('-')[0].trim() : "Layanan";
+            const berat = inputBerat ? inputBerat.value : "1";
+
+            const toast = document.getElementById("toast");
+            const namaEl = document.getElementById("toast-nama");
+            const pesananEl = document.getElementById("toast-pesanan");
+
+            if (toast && namaEl && pesananEl) {
+                namaEl.innerText = savedName;
+                pesananEl.innerText = `Baru saja memesan ${namaLayanan} ${berat}kg`;
+                toast.classList.add("show");
+
+                setTimeout(() => {
+                    toast.classList.remove("show");
+                }, 4000);
+            }
+        });
+    }
+});
+    
