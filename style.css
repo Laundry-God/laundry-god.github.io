@@ -818,36 +818,27 @@ footer a {
 }
 
 /* ==========================================
-   FORCE UBAH 'KLIK UNTUK PILIH PAKET' JADI TOMBOL
+   STYLING TOMBOL PILIH PAKET
    ========================================== */
-
-/* Targetkan elemen link / button / teks klik di dalam card */
-.card a, 
-.card button,
-.card [onclick],
-.card .btn,
-.service-card a,
-.service-card button {
+.btn-pilih {
   display: block !important;
   width: 100% !important;
   text-align: center !important;
-  background-color: #2563eb !important; /* Warna biru */
+  background-color: #2563eb !important; /* Warna biru tombol */
   color: #ffffff !important;           /* Teks putih */
   font-weight: 700 !important;
   font-size: 0.9rem !important;
   padding: 0.75rem 1rem !important;
   margin-top: 1rem !important;
   border-radius: 10px !important;
-  border: none !important;
-  text-decoration: none !important;
-  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25) !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3) !important;
   box-sizing: border-box !important;
+  transition: all 0.2s ease-in-out !important;
 }
 
-/* Efek pas ditekan di HP */
-.card a:active, 
-.card button:active,
-.card [onclick]:active {
+/* Efek saat dipencet di HP */
+.btn-pilih:active {
   background-color: #1d4ed8 !important;
-  transform: scale(0.98) !important;
+  transform: scale(0.97) !important;
 }
