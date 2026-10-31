@@ -1075,3 +1075,42 @@ div.section-title-wrap p {
     text-align: center !important;
 }
 
+/* --- FIX LAYOUT DESKTOP & FOOTER --- */
+
+/* Lebar Kontainer Utama */
+.container, main, section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 15px;
+}
+
+/* Biar Kalkulator & Fitur Bersanding Rapi di Desktop */
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+/* Footer Memanjang Penuh 100% Lebar Layar */
+.site-footer {
+    width: 100% !important;
+    background-color: #111827 !important;
+    color: #9ca3af !important;
+    padding: 35px 20px !important;
+    text-align: center !important;
+    margin-top: 60px !important;
+    box-sizing: border-box !important;
+    clear: both !important;
+}
+
+.site-footer p {
+    color: #d1d5db !important;
+    margin-bottom: 10px;
+}
+
+.site-footer a {
+    color: #60a5fa !important;
+    text-decoration: none;
+    margin: 0 10px;
+}
