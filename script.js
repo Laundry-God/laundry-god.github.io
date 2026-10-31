@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Tampilkan tombol konfirmasi
             btnKonfirmasiInline.style.display = "block";
-            btnKonfirmasiInline.innerText = `✅ KONFIRMASI KE WA (${savedName})`;
+            btnKonfirmasiInline.innerText = "✅ KONFIRMASI";
             btnKonfirmasiInline.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
             // Tampilkan toast
