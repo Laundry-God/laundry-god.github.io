@@ -3,301 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CleanLaundry - UMKM Laundry</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Laundry God — Laundry Kiloan Cepat & Wangi</title>
     <link rel="stylesheet" href="style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7783605277149504"
-     crossorigin="anonymous"></script>
 </head>
 <body>
-    
+
+    <!-- HERO BANNER -->
     <section class="hero">
-        <div class="hero-container">
+        <div class="hero-content">
             <h1>Laundry Kiloan Cepat & Wangi</h1>
             <p>Antar Jemput Gratis — Cucian bersih, wangi, dan rapi. Diantar jemput langsung ke tempatmu, gratis tanpa biaya tambahan.</p>
-            
-            </a>
-            <div class="hero-subtext">Respon cepat • Chat sekarang • Gratis pick up & delivery</div>
+            <p>Respon cepat • Chat sekarang • Gratis pick up & delivery</p>
         </div>
     </section>
 
-    <!-- Judul Seksi Layanan & Harga -->
-<section class="pricing-section">
-    <div class="section-title-wrap">
-        <span class="section-badge">Pilihan Layanan</span>
-        <h2>Pilih Paket Laundry Sesuai Kebutuhanmu</h2>
-        <p>Harga transparan tanpa biaya tersembunyi. Klik layanan untuk lihat detail lengkap & promonya!</p>
-    </div>
-    
-    <!-- ... Di sini batas awal pricing grid / kartu layanan lu ... -->
-    
-    
-  <!-- Bungkus utama tempat grid kartu -->
-  <div class="pricing-grid">
-
-    <!-- Kartu 1: Cuci Kiloan -->
-    <div class="card">
-      <a href="Kiloan.html" class="price-card">
-        <i class="fa-solid fa-basket-shopping"></i>
-        <h3>Cuci Kiloan</h3>
-        <div class="price">Rp 6.000 <span>/kg</span></div>
-        <div class="desc">Cuci bersih + deterjen wangi</div>
-        <div class="extra">Boneka / Jaket Rp 12.000 /kg</div>
-        <span class="tap-hint"><i class="fa-solid fa-arrow-right"></i> Lihat Detail Layanan</span>
-      </a>
-    </div>
-
-    <!-- Kartu 2: Cuci + Setrika -->
-    <div class="card">
-      <a href="Setrika.html" class="price-card">
-        <i class="fa-solid fa-shirt"></i>
-        <h3>Cuci + Setrika</h3>
-        <div class="price">Rp 9.000 <span>/kg</span></div>
-        <div class="desc">Cuci + setrika rapi, wangi tahan lama</div>
-        <div class="extra">Boneka / Jaket Rp 12.000 /kg</div>
-        <span class="tap-hint"><i class="fa-solid fa-arrow-right"></i> Lihat Detail Layanan</span>
-      </a>
-    </div>
-
-    <!-- Kartu 3: Bed Cover -->
-    <div class="card">
-      <a href="Bedcover.html" class="price-card">
-        <i class="fa-solid fa-bed"></i>
-        <h3>Bed Cover / Selimut</h3>
-        <div class="price">Rp 15.000 <span>/kg</span></div>
-        <div class="desc">Bersih, higienis, wangi</div>
-        <div class="extra">Boneka / Jaket Rp 12.000 /kg</div>
-        <span class="tap-hint"><i class="fa-solid fa-arrow-right"></i> Lihat Detail Layanan</span>
-      </a>
-    </div>
-      
-      <!-- Seksi Keunggulan (Why Choose Us) -->
-<section class="features-section">
-    <h2>Kenapa Pilih Laundry God?</h2>
-    <div class="features-grid">
-        <div class="feature-card">
-            <div class="feature-icon">🚀</div>
-            <h3>Antar Jemput Gratis</h3>
-            <p>Tanpa minimal order berat tertentu, siap jemput dan antar langsung ke depan pintu rumahmu.</p>
+    <!-- SECTION 1: LAYANAN -->
+    <section class="container">
+        <div class="section-title">
+            <span class="badge">PILIHAN LAYANAN</span>
+            <h2>Pilih Paket Laundry Sesuai Kebutuhanmu</h2>
+            <p>Harga transparan tanpa biaya tersembunyi. Klik layanan untuk lihat detail lengkap & promonya!</p>
         </div>
-        <div class="feature-card">
-            <div class="feature-icon">⏱️</div>
-            <h3>Jaminan Tepat Waktu</h3>
-            <p>Proses pencucian dan pengeringan teratur dengan opsi layanan kilat selesai dalam 24 jam.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">🌿</div>
-            <h3>Deterjen Premium</h3>
-            <p>Aman untuk kain sensitif, membunuh kuman, serta memberikan keharuman tahan lama.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">🛡️</div>
-            <h3>Garansi Cuci Ulang</h3>
-            <p>Hasil cuci kurang bersih atau pakaian kurang wangi? Kami siap cuci ulang secara gratis tanpa debat.</p>
-        </div>
-    </div>
-</section>
-<!-- Seksi Kalkulator Harga -->
-<section class="calculator-section">
-    <h2>Hitung Estimasi Biaya</h2>
-    <p class="calc-subtitle">Pilih layanan dan masukkan perkiraan berat pakaianmu</p>
-    
-    <div class="calc-card">
-        <div class="calc-group">
-            <label for="service-select">Pilih Layanan:</label>
-            <!-- Bagian Input Pilihan Layanan -->
-<select id="layanan" onchange="hitungEstimasi()">
-    <option value="6000">Cuci Kiloan - Rp 6.000 /kg</option>
-    <option value="9000">Cuci Express - Rp 9.000 /kg</option>
-    <option value="5000">Setrika Saja - Rp 5.000 /kg</option>
-    <option value="15000">Bed Cover / Selimut - Rp 15.000 /pcs</option>
-</select>
 
-<!-- Bagian Input Berat -->
-<input type="number" id="berat" placeholder="Masukkan berat (kg)" oninput="hitungEstimasi()" value="3">
+        <div class="services-grid">
+            <div class="card">
+                <h3>Cuci Kiloan</h3>
+                <p class="price">Rp 6.000 <span>/kg</span></p>
+                <p>Cuci bersih + deterjen wangi</p>
+                <small>Boneka / Jaket Rp 12.000 /kg</small>
+            </div>
+            <div class="card">
+                <h3>Cuci + Setrika</h3>
+                <p class="price">Rp 9.000 <span>/kg</span></p>
+                <p>Cuci + setrika rapi, wangi tahan lama</p>
+                <small>Boneka / Jaket Rp 12.000 /kg</small>
+            </div>
+            <div class="card">
+                <h3>Bed Cover / Selimut</h3>
+                <p class="price">Rp 15.000 <span>/kg</span></p>
+                <p>Bersih, higienis, wangi</p>
+                <small>Boneka / Jaket Rp 12.000 /kg</small>
+            </div>
+        </div>
+    </section>
 
-<!-- Teks Tempat Hasil Hitungan -->
-<h3 id="total-harga">Total Estimasi: Rp 18.000</h3>
+    <!-- SECTION 2: FITUR, KALKULATOR, & FAQ (3 KOLOM DIBATASI CUMA SAMPAI SINI) -->
+    <section class="container">
+        <div class="features-calc-grid">
             
+            <!-- Kolom 1: Kenapa Pilih -->
+            <div class="column-box">
+                <h3>Kenapa Pilih Laundry God?</h3>
+                <div class="feature-item">
+                    <h4>🚀 Antar Jemput Gratis</h4>
+                    <p>Tanpa minimal order berat tertentu, siap jemput dan antar langsung ke depan pintu rumahmu.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>⏱️ Jaminan Tepat Waktu</h4>
+                    <p>Proses pencucian dan pengeringan teratur dengan opsi layanan kilat selesai dalam 24 jam.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🌿 Deterjen Premium</h4>
+                    <p>Aman untuk kain sensitif, membunuh kuman, serta memberikan keharuman tahan lama.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🛡️ Garansi Cuci Ulang</h4>
+                    <p>Hasil cuci kurang bersih atau pakaian kurang wangi? Kami siap cuci ulang secara gratis tanpa debat.</p>
+                </div>
+            </div>
+
+            <!-- Kolom 2: Kalkulator Estimasi -->
+            <div class="column-box calculator-card">
+                <h3>Hitung Estimasi Biaya</h3>
+                <p class="subtitle">Pilih layanan dan masukkan perkiraan berat pakaianmu</p>
+
+                <label for="layanan">Pilih Layanan:</label>
+                <select id="layanan" onchange="hitungEstimasi()">
+                    <option value="6000">Cuci Kiloan - Rp 6.000 /kg</option>
+                    <option value="9000">Cuci + Setrika - Rp 9.000 /kg</option>
+                    <option value="5000">Setrika Saja - Rp 5.000 /kg</option>
+                    <option value="15000">Bed Cover / Selimut - Rp 15.000 /pcs</option>
+                </select>
+
+                <label for="berat">Perkiraan Berat (kg):</label>
+                <input type="number" id="berat" value="3" min="1" oninput="hitungEstimasi()">
+
+                <h4 id="total-harga">Total Estimasi: Rp 18.000</h4>
+
+                <a id="wa-link" href="#" target="_blank" class="btn-wa">
+                    Pesan Hasil Estimasi via WA
+                </a>
+            </div>
+
+            <!-- Kolom 3: FAQ -->
+            <div class="column-box">
+                <h3>Pertanyaan Sering Diajukan (FAQ)</h3>
+                <div class="faq-item">
+                    <h4>Berapa lama proses pengerjaan cuci kiloan?</h4>
+                    <p>Untuk layanan reguler memakan waktu 2x24 jam. Kami juga menyediakan layanan kilat/express 24 jam dengan biaya tambahan.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Bagaimana cara kerja layanan Antar Jemput Gratis?</h4>
+                    <p>Tim kurir kami akan menjemput pakaian kotor langsung ke lokasi rumah/kost kamu dan mengantarkannya kembali setelah selesai diproses. Cukup hubungi kami via WhatsApp!</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Apakah ada minimal berat untuk cuci kiloan?</h4>
+                    <p>Tidak ada minimal berat! Berapa pun berat pakaianmu siap kami proses.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Bagaimana jika pakaian saya rusak atau hilang?</h4>
+                    <p>Kami memiliki garansi ganti rugi dan penggantian cuci ulang jika ada kendala pada pakaianmu.</p>
+                </div>
+            </div>
+
+        </div> <!-- TAG PENUTUP GRID 3 KOLOM -->
+    </section>
+
+    <!-- SECTION 3: TESTIMONI (BEBAS DARI 3 KOLOM) -->
+    <section class="container">
+        <div class="section-title">
+            <h2>Apa Kata Pelanggan Kami?</h2>
         </div>
-
-        <a id="wa-link" href="#" target="_blank" class="btn-wa">
-    Pesan Hasil Estimasi via WA
-        </a>
-        
-    </div>
-</section>
-
-      <!-- Seksi FAQ Accordion -->
-<section class="faq-section">
-    <h2>Pertanyaan Sering Diajukan (FAQ)</h2>
-    
-    <div class="faq-container">
-        <details class="faq-item">
-            <summary>Berapa lama proses pengerjaan cuci kiloan?</summary>
-            <p>Untuk layanan reguler memakan waktu 2x24 jam. Kami juga menyediakan layanan kilat/express 24 jam dengan biaya tambahan.</p>
-        </details>
-
-        <details class="faq-item">
-            <summary>Bagaimana cara kerja layanan Antar Jemput Gratis?</summary>
-            <p>Tim kurir kami akan menjemput pakaian kotor langsung ke lokasi rumah/kost kamu dan mengantarkannya kembali setelah selesai diproses. Cukup hubungi kami via WhatsApp!</p>
-        </details>
-
-        <details class="faq-item">
-            <summary>Apakah ada minimal berat untuk cuci kiloan?</summary>
-            <p>Minimal pemesanan untuk cuci kiloan adalah 3 kg. Jika berat pakaian kurang dari 3 kg, tarif yang dikenakan tetap dihitung setara 3 kg.</p>
-        </details>
-
-        <details class="faq-item">
-            <summary>Bagaimana jika pakaian saya rusak atau hilang?</summary>
-            <p>Kami menerapkan standar operasional ketat dengan memisah tiap item per pelanggan. Jika terjadi kerusakan/kehilangan akibat kesalahan kami, kami menyediakan garansi ganti rugi sesuai ketentuan.</p>
-        </details>
-    </div>
-</section>
-
-      <!-- Seksi Testimoni Pelanggan -->
-<section class="testimonial-section">
-    <h2>Apa Kata Pelanggan Kami?</h2>
-    
-    <div class="testimonial-grid">
-        <div class="testimonial-card">
-            <div class="stars">★★★★★</div>
-            <p>"Antar jemputnya cepet banget! Pakaian wangi tahan lama dan lipatannya rapi. Cocok banget buat anak kost yang gak sempet nyuci."</p>
-            <div class="client-info">
-                <strong>Rizky Pratama</strong>
-                <span>Mahasiswa</span>
+        <div class="testimonial-grid">
+            <div class="card">
+                <p>⭐⭐⭐⭐⭐</p>
+                <p>"Antar jemputnya cepet banget! Pakaian wangi tahan lama dan lipatannya rapi. Cocok banget buat anak kost yang gak sempat nyuci."</p>
+                <strong>Rizky Pratama</strong> <br>
+                <small>Mahasiswa</small>
+            </div>
+            <div class="card">
+                <p>⭐⭐⭐⭐⭐</p>
+                <p>"Bedcover raksasa diselesaiin tepat waktu dan bersih banget dari noda. Pelayanan via WA-nya juga ramah dan respon cepat."</p>
+                <strong>Siti Sarah</strong> <br>
+                <small>Ibu Rumah Tangga</small>
             </div>
         </div>
+    </section>
 
-        <div class="testimonial-card">
-            <div class="stars">★★★★★</div>
-            <p>"Bedcover raksasa diselesaiin tepat waktu dan bersih banget dari noda. Pelayanan via WA-nya juga ramah dan respon cepat."</p>
-            <div class="client-info">
-                <strong>Siti Sarah</strong>
-                <span>Ibu Rumah Tangga</span>
-            </div>
-        </div>
-    </div>
-</section>
-      
-    <div class="features-bar">
-        <div class="badge-item"><i class="fa-solid fa-circle-check"></i> Antar Jemput Gratis</div>
-        <div class="badge-item"><i class="fa-solid fa-circle-check"></i> Selesai 24 Jam</div>
-        <div class="badge-item"><i class="fa-solid fa-circle-check"></i> Wangi & Bersih</div>
-    </div>
-      
-      
-     <!-- Floating WA Bulat & Draggable -->
-<a href="https://wa.me/6283187521130?text=Halo%20Laundry%20God,%20saya%20mau%20order" 
-   class="btn-wa-floating" 
-   id="draggableWA" 
-   target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" width="30" height="30">
-</a>
-      
-<script>
-    const waBtn = document.getElementById('draggableWA');
-    let isDragging = false;
-    let offsetX = 0, offsetY = 0;
-    let currentX = 0, currentY = 0;
-    let ticking = false;
-
-    waBtn.addEventListener('touchstart', (e) => {
-        isDragging = false;
-        const touch = e.touches[0];
-        const rect = waBtn.getBoundingClientRect();
-        offsetX = touch.clientX - rect.left;
-        offsetY = touch.clientY - rect.top;
-    }, { passive: true });
-
-    waBtn.addEventListener('touchmove', (e) => {
-        isDragging = true;
-        const touch = e.touches[0];
-        
-        let left = touch.clientX - offsetX;
-        let top = touch.clientY - offsetY;
-
-        const maxLeft = window.innerWidth - waBtn.offsetWidth;
-        const maxTop = window.innerHeight - waBtn.offsetHeight;
-
-        currentX = Math.max(0, Math.min(left, maxLeft));
-        currentY = Math.max(0, Math.min(top, maxTop));
-
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                waBtn.style.left = `${currentX}px`;
-                waBtn.style.top = `${currentY}px`;
-                waBtn.style.right = 'auto';
-                waBtn.style.bottom = 'auto';
-                ticking = false;
-            });
-            ticking = true;
-        }
-    }, { passive: true });
-
-    waBtn.addEventListener('click', (e) => {
-        if (isDragging) {
-            e.preventDefault();
-        }
-    });
-</script>
-      
-          <!-- Style & Elemen Notifikasi Melayang -->
-<style>
-    .toast-notification {
-        position: fixed;
-        bottom: 80px; /* Di atas tombol WA melayang */
-        left: 15px;
-        background: #ffffff;
-        color: #333;
-        padding: 12px 16px;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 13px;
-        z-index: 9999;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.5s ease-in-out;
-        pointer-events: none;
-        border-left: 4px solid #25d366;
-        max-width: 280px;
-    }
-    .toast-notification.show {
-        opacity: 1;
-        transform: translateY(0);
-    }
-</style>
-
-<div id="toast" class="toast-notification">
-    <span style="font-size: 12px;">🟢</span>
-    <div>
-        <strong id="toast-nama">Ahmad (Buah Batu)</strong><br>
-        <span id="toast-pesanan" style="color: #666;">Baru saja memesan Cuci Kiloan 5kg</span>
-    </div>
-</div>
-
-        <!-- Pemanggil JS Terpisah -->
-    <script src="script.js"></script>
-      
-  <!-- SELESAI SEMUA KONTEN UTAMA -->
-    
-    <!-- FOOTER MEMANJANG PENUH (100% LEBAR) -->
+    <!-- FOOTER LEGAL & KONTAK (BEBAS DI PALING BAWAH 100% LEBAR) -->
     <footer class="site-footer">
         <p><strong>Laundry God — Layanan Laundry Profesional</strong></p>
-        <p>Jl.No. 123, Ngawi, Jawa Tengah | WA: 0831-8752-1130</p>
-        <div>
+        <p>Jl. Contoh No. 123, Bandung, Jawa Barat | WA: 0812-3456-7890</p>
+        <div class="footer-links">
             <a href="privacy.html">Privacy Policy</a> | 
             <a href="terms.html">Terms of Service</a> | 
-            <a href="https://wa.me/6283187521130" target="_blank">Contact Us</a>
+            <a href="https://wa.me/6281234567890" target="_blank">Contact Us</a>
         </div>
-        <p>&copy; 2026 Laundry God. All rights reserved.</p>
+        <p class="copyright">&copy; 2026 Laundry God. All rights reserved.</p>
     </footer>
 
+    <!-- NOTIFIKASI TOAST DUMMY -->
+    <div id="toast" class="toast-notification">
+        <span style="font-size: 12px;">🟢</span>
+        <div>
+            <strong id="toast-nama">Ahmad (Bandung)</strong>
+            <span id="toast-pesanan">Baru saja memesan Cuci Kiloan 4kg</span>
+        </div>
+    </div>
+
+    <!-- MANGGIL FILE JS TERPISAH -->
     <script src="script.js"></script>
-      
 </body>
 </html>
