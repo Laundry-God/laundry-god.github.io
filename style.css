@@ -1140,3 +1140,102 @@ footer a {
     text-decoration: none !important;
     margin: 0 10px !important;
 }
+
+/* --- TAMPILAN KARTU & INPUT BANYAK DIPERBAIKI --- */
+
+/* Kartu Layanan BISA DIPENCET */
+.services-grid .card {
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.services-grid .card:hover {
+    transform: translateY(-50px);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+    border-color: #2563eb;
+}
+
+/* Grid 3 Kolom Tengah (Fitur, Kalkulator, FAQ) */
+.features-calc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+/* Kotak Container (Column Box) */
+.column-box {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.column-box h3 {
+    margin-top: 0;
+    color: #0f172a;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Item Fitur & FAQ */
+.feature-item, .faq-item {
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed #e2e8f0;
+}
+.feature-item h4, .faq-item h4 {
+    margin: 0 0 5px 0;
+    color: #1e293b;
+    font-size: 15px;
+}
+.feature-item p, .faq-item p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Form Input & Select Kalkulator Bikin Rapi */
+.calculator-card label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    margin-top: 12px;
+    margin-bottom: 5px;
+}
+
+.calculator-card select, 
+.calculator-card input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.calculator-card h4#total-harga {
+    background: #f1f5f9;
+    padding: 12px;
+    border-radius: 8px;
+    color: #1e293b;
+    text-align: center;
+    font-size: 16px;
+    margin: 15px 0;
+}
+
+.btn-wa {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #22c55e;
+    color: #ffffff;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    box-sizing: border-box;
+}
