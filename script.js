@@ -141,9 +141,9 @@ function mulaiToastOtomatis() {
         
         setTimeout(() => {
             toast.classList.remove("show");
-        }, 4000);
+        }, 8000);
         
-    }, 8000);
+    }, 10000);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 setTimeout(() => {
                     toast.classList.remove("show");
-                }, 8000);
+                }, 10000);
             }
         });
     }
